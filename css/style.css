@@ -1,0 +1,117 @@
+@import url(https://fonts.googleapis.com/css?family=Lato:400,400italic);
+
+*{
+	padding: 0;
+	margin: 0;
+}
+
+
+html{
+	background-image: linear-gradient(#151314, #1d1b1c);
+	background-image: -moz-linear-gradient(top, #151314, #1d1b1c);
+	background-image: -webkit-linear-gradient(top, #151314, #1d1b1c);
+	background-image: -o-linear-gradient(top, #151314, #1d1b1c);
+	min-height: 100%;
+	height: auto;
+}
+
+#container{
+	max-width: 500px;
+	margin: 2% auto;
+	font-family: 'Lato', 'Arcon', sans-serif;
+}
+
+@media (max-width: 480px) {
+	#container{
+		max-width: 390px;
+		margin: 2% auto;
+	}
+
+	#sub_container{
+		width: 92%;
+		margin: 0;
+	}
+
+	body div#container form{
+		width: 370px;
+	}
+}
+
+@media screen and (min-width: 480px){
+	#sub_container{
+		width: 65%;
+	}
+
+}
+
+#sub_container{
+	margin: auto;
+	padding-top: 2%;
+	background-color: #FF9999; //#FBE0D9;
+	opacity: 0.7;
+}
+
+body div#container form{
+	position: relative;
+	width: 80%;
+	margin: 2% auto 2px;
+	background-color: #302624;
+	padding: 5%;	
+}
+
+body div#container form label.frequence{
+	font-size: 0.9em;
+	display: block;
+	color: #F9F6FF;
+	margin-top: 1%;
+}
+
+body div#container form label.monnaie{
+	font-size: 0.9em;
+	display: inline;
+	color: #F9F6FF;
+	margin-right: 3%;
+	margin-top: 1%;
+	margin-bottom: 2%;
+}
+
+.label-text{
+	color: #F9F6FF;
+	position: relative;
+	top: 30px;
+	left: 5px;
+	transition: all 0.3s ease;
+}
+
+.label-text-top{
+	position: relative;
+	top: 5px;
+	left: 5px;
+}
+
+.champ{
+	display: block;
+	max-width: 300px;
+	width: 70%;
+	height: 35px;
+	padding-left: 2%;
+	//margin-bottom: 2%;
+	background-color: transparent;
+	outline: none;
+	border-style: none;
+	border-bottom: 2px solid #FBE0D9;
+	color: #0099FF; //#F9F6FF;
+	font-weight: bold;
+}
+
+#resultat{
+	width: 56%;
+	height: 40px;
+	margin: 2% auto;
+	padding: 2%;
+	background-color: #FF9999; //#FBE0D9;
+	color: #302624;
+	font-weight: bold;
+	font-size: 1.2em;
+	text-align: center;
+}

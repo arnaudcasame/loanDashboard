@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+
+		<title>Annuité</title>
+		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" type="text/css" href="css/style.css">
+		<link rel="icon" href="img/finance_pink.ico">
+	</head>
+	<body>
+		<div id="container">
+			<div id='sub_container'>
+				<form action="#" method='#'>
+					<label class='monnaie'>
+						<input type='radio' name='monnaie' checked="true" value='HTG' class='devise'>
+						HTG
+					</label>
+					<label class='monnaie'>
+						<input type='radio' name='monnaie' value='USD' class='devise'>
+						USD
+					</label><label class='monnaie'>
+						<input type='radio' name='monnaie' value='EUR' class='devise'>
+						EUR
+					</label>
+					<div>
+						<label class='label-text'>Principal</label>
+						<input type="text" name='principal'  class="champ" id='montant'>
+					</div>
+					<div>
+						<label class='label-text'>Taux d'intérêt annuel</label>
+						<input type="text" name='taux' class="champ" id='taux'>
+					</div>
+					<div>
+						<label class='label-text'>Durée en année</label>
+						<input type="text" class="champ" id='duree'>
+					</div>
+					<label class='frequence'>
+						<input type='radio' id='_1' name='frequence' class='freq' value='1'>
+						fréquence (1 paiement par an)
+					</label>
+					<label class='frequence'>
+						<input type='radio' id='_2' name='frequence' value='2' class='freq'>
+						fréquence (2 paiements par an)
+					</label>
+					<label class='frequence'>
+						<input type='radio' id='_12' name='frequence' value='12' class='freq'>
+						fréquence (12 paiements par an)
+					</label>
+				</form>
+				<p id='resultat'></p>
+				<!-- <i class="fa fa-dollar"></i> -->
+
+			</div>
+		</div>
+		
+		<script type="text/javascript" src='js/jquery-2.1.4.min.js'></script>
+		<script type="text/javascript" src='js/currency_format.js'></script>
+		<script src="js/annuite.js"></script>
+		<script>
+			var principal = document.getElementById('montant');
+			var taux_text = document.getElementById('taux');
+			var duree = document.getElementById('duree');
+			var resultat = document.getElementById('resultat');
+			var frequence = document.querySelectorAll('.freq');
+			var devise = document.querySelectorAll('.devise');
+			var icon = document.createElement("i");
+			var p;
+
+			function affiche_tout(){
+				// Epuration du champ text_taux
+				var taux = epure_champ(taux_text, '%');
+				// initiation de la frequence de paiement
+				var frequence = check_on_frequence();
+				// initiation de la devise du prêt
+				var monnaie = check_on_devise();
+				//conversion de taux_text en number
+				var taux_text_num = Number(taux_text.value);
+				
+				// Instanciation de l'objet prêt
+				if(isNaN(taux_text_num)){
+					p = new Pret(principal.value, taux, duree.value, frequence, monnaie);
+				}else{
+					p = new Pret(principal.value, taux_text.value, duree.value, frequence, monnaie);
+				}
+				// Après avoir créé l'objet prêt
+				// On calcul le paiement periodique
+				var paiement = p.calculPaiement();
+				// On affiche le paiement dans l'espace resultat
+				resultat.innerHTML = conversion_nombre(paiement, ' ')+' ';
+				// On affiche l'icon de la devise selectionnée
+				if(paiement != "Calculating..."){
+					resultat.appendChild(show_icon(p.devise));
+				}
+			}
+
+			function epure_champ(champ, prob){
+				var valeur = champ.value.substring(0, champ.value.indexOf(prob));
+				return valeur;
+			}
+			
+			function show_icon(valeur){
+				if(valeur === "USD"){
+					icon.innerHTML =  '';
+					icon.className = "fa fa-dollar";
+				}else if(valeur === "EUR"){
+					icon.innerHTML = '';
+					icon.className = "fa fa-euro";
+				}else{
+					icon.className = "";
+					icon.innerHTML = valeur;
+				}
+				return icon;
+			}
+
+			function loop_devise(){
+				return function (){
+					affiche_tout();
+				};
+			}
+
+			var n = devise.length;
+			for(var i=0; i<n; i++){
+				devise[i].onclick = loop_devise();
+			}
+
+			function loop_frequence(){
+				return function (){
+					affiche_tout();
+				};
+			}
+
+			var o = frequence.length;
+			for(var j=0; j<o; j++){
+				frequence[j].onclick = loop_frequence();
+			}
+			
+			function check_on_frequence(){
+				if(frequence[0].checked){
+					return frequence[0].value;
+				}else if(frequence[1].checked){
+					return frequence[1].value;
+				}else{
+					return frequence[2].value;
+				}
+			}
+
+			function check_on_devise(){
+				if(devise[0].checked){
+					return devise[0].value;
+				}else if(devise[1].checked){
+					return devise[1].value;
+				}else{
+					return devise[2].value;
+				}
+			}
+/*
+			function loop_values(){
+				return function (){
+					affiche_tout();
+				};
+			}
+
+			var q = frequence.length;
+			for(var k=0; k<q; k++){
+				frequence[k].onkeyup = loop_values();
+			}
+*/
+			principal.onkeyup = function(){
+				affiche_tout();
+			}
+			
+			taux_text.onkeyup = function(){
+				affiche_tout();
+			}
+			
+			duree.onkeyup = function(){
+				affiche_tout();
+			}
+
+			var arnaud = new Emprunteur('Casamé', 'Arnaud', 32, '007-752-166-7', '4, rue anacréon, Fontamara 43', 35000);
+					
+			$(document).ready(function(){
+				document.getElementById('_1').checked = false;
+				document.getElementById('_2').checked = false;
+				document.getElementById('_12').checked = true;
+				var etiquettes = $('.label-text');
+				var fields = $('#montant, #taux, #duree');
+				fields.val('');
+				
+				fields.focus(function(){
+					$(this).parent().children('.label-text').addClass('label-text-top');
+				});
+
+				fields.focusout(function() {
+					if ($.trim($(this).val()).length == 0){
+						$(this).parent().children('.label-text').removeClass('label-text-top');
+					}
+					/*
+					$('div#formWrapper').removeClass('darken-bg');
+					$('div.logo').removeClass('logo-active');
+					*/
+				});
+
+				$('#taux').focus(function(){
+					taux_text.value = '';
+					affiche_tout();
+				});
+
+				$('#taux').focusout(function(){
+					if(taux_text.value !== ''){
+						var tx_out = taux_text.value+'%';
+						taux_text.value = tx_out;
+					}
+					affiche_tout();
+				});
+
+				$('#duree').focus(function(){
+					duree.value = '';
+				});
+
+				$('#montant').focus(function(){
+					principal.value = '';
+				});
+
+				etiquettes.click(function(){
+					$(this).parent().children('.champ').focus();
+				});
+			});
+		</script>
+	</body>
+</html>
