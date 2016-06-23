@@ -1,3 +1,16 @@
+/*************************************************
+***Cette fonction permet d'arrondir les nombres **
+***décimaux. Il prend en paramètres 1) le nombre**
+***à arrondir, 2) le nombre de chiffre après la***
+***la virgule. coded by Arnaud Casamé		   ***
+*************************************************/
+function arrondi(t, n){
+	var dec = Math.pow(10,n);
+	var result = Math.round(dec*t)/dec;
+	
+	return result;
+}
+
 // Cette function permet de convertir un nombre en un format monétaire quelconque
 // en ajoutant une virgule, un point ou un espace à interval de 3 chiffres
 function conversion_nombre(numbre, format){

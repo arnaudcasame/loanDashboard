@@ -104,8 +104,8 @@ body div#container form label.monnaie{
 	font-weight: bold;
 }
 
-#resultat{
-	width: 56%;
+#result_box{
+	width: 200px;
 	height: 40px;
 	margin: 2% auto;
 	padding: 2%;
@@ -114,4 +114,20 @@ body div#container form label.monnaie{
 	font-weight: bold;
 	font-size: 1.2em;
 	text-align: center;
+}
+
+#monnaie, #resultat{
+	display: inline-block;
+}
+
+#monnaie{
+	width: 95px;
+	text-align: left;
+	font-size: 0.7em;
+	vertical-align: top;
+}
+
+#resultat{
+	width: 95px;
+	text-align: right;
 }
