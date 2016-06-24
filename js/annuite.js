@@ -9,117 +9,126 @@
 // 	this.salaire = salaire;
 // }
 
-(function(){
-
-	var Pret = {
+var Pret = (function(){
 		
-		principal: 0,
-		taux: 0,
-		duree: 0,
-		devise: 'HTG',
-		monnaie: null,
-		frequence: 12,
-		paiement: '',
-		formul: null,
-		calculated: false,
-		
+		// Initialization
+		var listPret = [];
+		var principal = 0;
+		var taux = 0;
+		var duree = 0;
+		var devise = 'HTG';
+		var monnaie = null;
+		var frequence = 12;
+		var paiement = '';
+		var formul = null;
+		var calculated = false;
 
-		init: function(){
-			this.cacheDom();
-			this.bindEvents();
-			this.render();
-		},
+		// Caching the DOM
+		principal = document.getElementById('montant');
+		taux = document.getElementById('taux');
+		duree = document.getElementById('duree');
+		var freq = document.getElementsByClassName('freq');
+		monnaie = document.getElementsByClassName('devise');
+		formul = document.getElementById('formul');
+		var resultat = document.getElementById('resultat');	
+		var cours = document.getElementById('monnaie');
+		var save = document.getElementById('save');
+	
 
-		cacheDom: function(){
-			this.principal = document.getElementById('montant');
-			this.taux = document.getElementById('taux');
-			this.duree = document.getElementById('duree');
-			this.freq = document.getElementsByClassName('freq');
-			this.monnaie = document.getElementsByClassName('devise');
-			this.formul = document.getElementById('formul');
-			this.resultat = document.getElementById('resultat');	
-			this.cours = document.getElementById('monnaie');
-		},
+		//binding Events
+		formul.onchange = function(){
+			calculPaiement();
+		};
 
-		bindEvents: function(){
-			var that = this;
-			this.formul.onchange = function(){
-				that.calculPaiement();
-			};
+		principal.onkeyup = function(){
+			calculPaiement();
+		};
 
-			this.principal.onkeyup = function(){
-				that.calculPaiement();
-			};
+		taux.onkeyup = function(){
+			calculPaiement();
+		};
 
-			this.taux.onkeyup = function(){
-				that.calculPaiement();
-			};
+		duree.onkeyup = function(){
+			calculPaiement();
+		}; 
 
-			this.duree.onkeyup = function(){
-				that.calculPaiement();
-			}; 
+		freq[0].onclick = function(){
+			frequence = this.value;
+			calculPaiement();
+		};
 
-			this.freq[0].onclick = function(){
-				that.frequence = this.value;
-				that.calculPaiement();
-			};
+		freq[1].onclick = function(){
+			frequence = this.value;
+			calculPaiement();
+		};
 
-			this.freq[1].onclick = function(){
-				that.frequence = this.value;
-				that.calculPaiement();
-			};
+		freq[2].onclick = function(){
+			frequence = this.value;
+			calculPaiement();
+		};
 
-			this.freq[2].onclick = function(){
-				that.frequence = this.value;
-				that.calculPaiement();
-			};
+		monnaie[0].onclick = function(e){
+			choixMonnaie(e.target);
+		};
 
-			this.monnaie[0].onclick = function(e){
-				that.choixMonnaie(e.target);
-			};
+		monnaie[1].onclick = function(e){
+			choixMonnaie(e.target);
+		};
 
-			this.monnaie[1].onclick = function(e){
-				that.choixMonnaie(e.target);
-			};
+		monnaie[2].onclick = function(e){
+			choixMonnaie(e.target);
+		};
 
-			this.monnaie[2].onclick = function(e){
-				that.choixMonnaie(e.target);
-			};
-		},
+		save.onclick = function(){
+			savePret();
+		};
 
-		render: function(){
-			this.resultat.textContent = this.paiement;
+		//defining functions
+		function render(){
+			resultat.textContent = paiement;
 
 
-			if(this.devise === "USD" && this.calculated){
-				this.cours.textContent =  '';
-				this.cours.className = "fa fa-dollar";
-			}else if(this.devise === "EUR" && this.calculated){
-				this.cours.textContent =  '';
-				this.cours.className = "fa fa-euro";
-			}else if(this.calculated){
-				this.cours.className = '';
-				this.cours.textContent = this.devise;
+			if(devise === "USD" && calculated){
+				cours.textContent =  '';
+				cours.className = "fa fa-dollar";
+			}else if(devise === "EUR" && calculated){
+				cours.textContent =  '';
+				cours.className = "fa fa-euro";
+			}else if(calculated){
+				cours.className = '';
+				cours.textContent = devise;
 			}
-		},
-
-		calculPaiement: function(){
-			this.paiement = (this.principal.value*((this.taux.value/100)/this.frequence))/(1 - Math.pow(1 + ((this.taux.value/100)/this.frequence), - (this.duree.value*this.frequence)));
-			if (isNaN(this.paiement) || this.paiement === Infinity){
-				this.paiement = (this.principal.value !== '') ? 'Calculating...' : '';
-			}else{
-				this.calculated = true;
-				this.paiement = arrondi(this.paiement, 2);
-				this.paiement = conversion_nombre(this.paiement, '  ');
-			}
-			this.render();
-		},
-
-		choixMonnaie: function(theOne){
-			this.devise = theOne.value;
-			this.render();
 		}
-	}
 
-	Pret.init();
+		function calculPaiement(){
+			paiement = (principal.value*((taux.value/100)/frequence))/(1 - Math.pow(1 + ((taux.value/100)/frequence), - (duree.value*frequence)));
+			if (isNaN(paiement) || paiement === Infinity){
+				paiement = (principal !== '') ? 'Calculating...' : '';
+			}else{
+				calculated = true;
+				paiement = arrondi(paiement, 2);
+				paiement = conversion_nombre(paiement, ' ');
+			}
+			render();
+		}
+
+		function choixMonnaie(theOne){
+			devise = theOne.value;
+			render();
+		}
+
+		function savePret(){
+			var _temp = {
+				amount : principal.value,
+				tx : taux.value,
+				period : duree.value,
+				payment : paiement+' '+devise
+			}
+			listPret.push(_temp);
+			console.log(listPret);
+		}
+
+		return {
+			savePret: savePret
+		};
 })()
