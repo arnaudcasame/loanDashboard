@@ -6,28 +6,31 @@
 }
 
 
-html{
-	background-image: linear-gradient(#151314, #1d1b1c);
-	background-image: -moz-linear-gradient(top, #151314, #1d1b1c);
-	background-image: -webkit-linear-gradient(top, #151314, #1d1b1c);
-	background-image: -o-linear-gradient(top, #151314, #1d1b1c);
+body{
+	background-color: #F1FCFD;
 	min-height: 100%;
 	height: auto;
-}
-
-#container{
-	max-width: 500px;
-	margin: 2% auto;
 	font-family: 'Lato', 'Arcon', sans-serif;
 }
 
+.container{
+	max-width: 320px;
+	margin: 2% 2%;
+	box-shadow: 0 0 15px 3px rgba(0,0,0, 0.5);
+	transition: box-shadow 0.3s;
+}
+
+.container:hover{
+	box-shadow: 0 0 10px 3px rgba(0,0,0, 0.3);
+}
+
 @media (max-width: 480px) {
-	#container{
+	.container{
 		max-width: 390px;
 		margin: 2% auto;
 	}
 
-	#sub_container{
+	#form_container{
 		width: 92%;
 		margin: 0;
 	}
@@ -38,54 +41,51 @@ html{
 }
 
 @media screen and (min-width: 480px){
-	#sub_container{
-		width: 65%;
+	#form_container{
+		width: 100%;
 	}
-
 }
 
-#sub_container{
+#form_container, #compare-container{
 	margin: auto;
 	padding-top: 2%;
-	background-color: #FF9999; //#FBE0D9;
+	background-color: #4D6DE3;
 	opacity: 0.7;
 }
 
-body div#container form{
+body div.container form{
 	position: relative;
 	width: 80%;
 	margin: 2% auto 2px;
-	background-color: #302624;
-	padding: 5%;	
+	background-color: #F1FCFD;
+	padding: 5%;
+	color: #393737;
 }
 
-body div#container form label.frequence{
+body div.container form label.frequence{
 	font-size: 0.9em;
 	display: block;
-	color: #F9F6FF;
 	margin-top: 1%;
 }
 
-body div#container form label.monnaie{
+body div.container form label.monnaie{
 	font-size: 0.9em;
 	display: inline;
-	color: #F9F6FF;
 	margin-right: 3%;
 	margin-top: 1%;
 	margin-bottom: 2%;
 }
 
 .label-text{
-	color: #F9F6FF;
 	position: relative;
-	top: 30px;
+	top: 25px;
 	left: 5px;
 	transition: all 0.3s ease;
 }
 
 .label-text-top{
 	position: relative;
-	top: 5px;
+	top: 0px;
 	left: 5px;
 }
 
@@ -93,15 +93,15 @@ body div#container form label.monnaie{
 	display: block;
 	max-width: 300px;
 	width: 70%;
-	height: 35px;
+	height: 25px;
 	padding-left: 2%;
-	//margin-bottom: 2%;
 	background-color: transparent;
 	outline: none;
 	border-style: none;
-	border-bottom: 2px solid #FBE0D9;
-	color: #0099FF; //#F9F6FF;
+	border-bottom: 2px solid #4D6DE3;
+	color: #4D6DE3;
 	font-weight: bold;
+	//border: 1px solid red;
 }
 
 #result_box{
@@ -109,7 +109,7 @@ body div#container form label.monnaie{
 	height: 40px;
 	margin: 2% auto;
 	padding: 2%;
-	background-color: #FF9999; //#FBE0D9;
+	//background-color: #FFF; //#FBE0D9;
 	color: #302624;
 	font-weight: bold;
 	font-size: 1.2em;
@@ -130,4 +130,40 @@ body div#container form label.monnaie{
 #resultat{
 	width: 95px;
 	text-align: right;
+}
+
+
+/****************************************
+****** Tables rules *********************
+****************************************/
+#compare-container{
+	margin: auto;
+	width: 100%;
+	text-align: center;
+}
+
+table.simulation{
+	display: inline-block;
+	margin: 0;
+	background-color: #F1FCFD;
+	//border: 1px solid red;
+}
+
+table.simulation caption{
+	//border: 1px solid #302624;
+	padding: 1%;
+}
+
+table.simulation tbody tr td{
+	width: 72px;
+	border: 1px solid #4D6DE3;
+	padding: 1.5%;
+}
+
+#tab1{
+	
+}
+
+#tab2{
+
 }

@@ -9,8 +9,8 @@
 		<link rel="icon" href="img/finance_pink.ico">
 	</head>
 	<body>
-		<div id="container">
-			<div id='sub_container'>
+		<div class="container">
+			<div id='form_container'>
 				<form action="#" method='#' id='formul'>
 					<label class='monnaie'>
 						<input type='radio' name='monnaie' checked="true" value='HTG' class='devise'>
@@ -52,11 +52,54 @@
 					<span id='resultat'></span>
 					<span id='monnaie'></span>
 				</p>
-				<!-- <i class="fa fa-dollar"></i> -->
-
+			</div><!-- #form_container -->
+		</div>
+		<div class="container">
+			<div id="compare-container">
+				<table class="simulation" id='tab1'>
+					<caption>tableau1</caption>
+					<tbody>
+						<tr>
+							<td>Principal</td>
+							<td>171600</td>
+						</tr>
+						<tr>
+							<td>Taux</td>
+							<td>8%</td>
+						</tr>
+						<tr>
+							<td>Durée</td>
+							<td>2 ans</td>
+						</tr>
+						<tr>
+							<td>Paiement</td>
+							<td>7 761.00</td>
+						</tr>
+					</tbody>
+				</table>
+				<table class="simulation" id='tab2'>
+					<caption>tableau2</caption>
+					<tbody>
+						<tr>
+							<td>Principal</td>
+							<td>171600</td>
+						</tr>
+						<tr>
+							<td>Taux</td>
+							<td>8%</td>
+						</tr>
+						<tr>
+							<td>Durée</td>
+							<td>2 ans</td>
+						</tr>
+						<tr>
+							<td>Paiement</td>
+							<td>7 761.00</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
-		
 		<script type="text/javascript" src='js/jquery-2.1.4.min.js'></script>
 		<script type="text/javascript" src='js/currency_format.js'></script>
 		<script src="js/annuite.js"></script>
@@ -83,6 +126,7 @@
 				$('div.logo').removeClass('logo-active');
 				*/
 			});
+
 		});
 		</script>
 	</body>
