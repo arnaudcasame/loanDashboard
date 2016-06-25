@@ -218,3 +218,216 @@ function render_liste(obj, indx, container){
 	document.body.appendChild(container).appendChild(sous_conteneur).appendChild(listes);	
 }
 
+
+// Fonction de calcul de la mensualité
+function calcul_mensualite(x, y, z){
+	if(isNaN(x)||isNaN(y)||isNaN(z)){
+		//popUp.style.display = 'inline';
+	}else{
+		//popUp.style.display = 'none';
+		var monthly = (x*(y/1200))/(1 - Math.pow(1 + (y/1200), -z));
+		return monthly;
+	}
+}
+
+
+function echeancier(){
+
+			var tableau = document.createElement('table');
+			var entete = document.createElement('thead');
+			var corps = document.createElement('tbody');
+
+		var caption = document.createElement('caption');
+		// if(document.getElementsByTagName('thead')[0].hasChildNodes()){
+	
+		// }else{
+			var container0 = document.createElement('tr');
+			var terme0 = document.createElement('th');
+			var balanceD0 = document.createElement('th');
+			var interet0 = document.createElement('th');
+			var principal0 = document.createElement('th');
+			var balanceF0 = document.createElement('th');
+			var interetC0 = document.createElement('th');
+
+			caption.innerHTML = 'Echéancier';
+			terme0.innerHTML = 'No';
+			balanceD0.innerHTML = 'Balance Départ';
+			interet0.innerHTML = 'Intérêt Payé';
+			principal0.innerHTML = 'Principal Payé';
+			balanceF0.innerHTML = 'Balance Fin';
+			interetC0.innerHTML = 'Intérêt Cumulé';
+
+			tableau.appendChild(caption);
+			container0.appendChild(terme0);
+			container0.appendChild(balanceD0);
+			container0.appendChild(interet0);
+			container0.appendChild(principal0);
+			container0.appendChild(balanceF0);
+			container0.appendChild(interetC0);
+
+			entete.appendChild(container0);
+		//}
+
+		var monthly = calcul_mensualite(document.getElementById('montant').value, document.getElementById('taux').value, document.getElementById('duree').value);
+		var i = document.getElementById('duree').value, 
+		No = i - (i-1),
+		balanceDepart = document.getElementById('montant').value,
+		interetPaye = balanceDepart * (document.getElementById('taux').value/1200),
+		principalPaye = monthly - interetPaye,
+		balanceFin = balanceDepart - principalPaye;
+		var interetCumule = interetPaye;
+
+		//if(document.getElementsByTagName('tbody')[0].hasChildNodes()){
+			//eraseNodes();
+
+			var container = document.createElement('tr');
+			var terme = document.createElement('td');
+			var balanceD = document.createElement('td');
+			var interet = document.createElement('td');
+			var principal = document.createElement('td');
+			var balanceF = document.createElement('td');
+			var interetC = document.createElement('td');
+
+			container.className = 'rows';
+			terme.className = 'termeTd';
+			balanceD.className = 'BalanceDTd';
+			interet.className = 'interetTd';
+			principal.className = 'principalTd';
+			balanceF.className = 'balanceFtd';
+			interetC.className = 'interetCtd';
+
+			terme.innerHTML = No,
+			balanceD.innerHTML = conversion_nombre(arrondi(balanceDepart, 2)),
+			interet.innerHTML = conversion_nombre(arrondi(interetPaye, 2)),
+			principal.innerHTML = conversion_nombre(arrondi(principalPaye, 2)),
+			balanceF.innerHTML = conversion_nombre(arrondi(balanceFin, 2)),
+			interetC.innerHTML = conversion_nombre(arrondi(interetCumule, 2));
+
+			container.appendChild(terme)
+			container.appendChild(balanceD)
+			container.appendChild(interet)
+			container.appendChild(principal)
+			container.appendChild(balanceF)
+			container.appendChild(interetC);
+			
+			corps.appendChild(container);
+
+			for(i; i>=2; i--){
+				No += 1,
+				balanceDepart = balanceFin,
+				interetPaye = balanceDepart * (tx.value/1200),
+				principalPaye = monthly - interetPaye,
+				balanceFin = balanceDepart - principalPaye,
+				interetCumule = interetCumule + interetPaye;
+				
+				var container = document.createElement('tr');
+				var terme = document.createElement('td');
+				var balanceD = document.createElement('td');
+				var interet = document.createElement('td');
+				var principal = document.createElement('td');
+				var balanceF = document.createElement('td');
+				var interetC = document.createElement('td');
+				
+				container.className = 'rows';
+				terme.className = 'termeTd';
+				balanceD.className = 'BalanceDTd';
+				interet.className = 'interetTd';
+				principal.className = 'principalTd';
+				balanceF.className = 'balanceFtd';
+				interetC.className = 'interetCtd';
+
+				terme.innerHTML = No,
+				balanceD.innerHTML = conversion_nombre(myRound(balanceDepart, 2)),
+				interet.innerHTML = conversion_nombre(myRound(interetPaye, 2)),
+				principal.innerHTML = conversion_nombre(myRound(principalPaye, 2)),
+				balanceF.innerHTML = conversion_nombre(myRound(balanceFin, 2)),
+				interetC.innerHTML = conversion_nombre(myRound(interetCumule, 2));
+				
+				container.appendChild(terme)
+				container.appendChild(balanceD)
+				container.appendChild(interet)
+				container.appendChild(principal)
+				container.appendChild(balanceF)
+				container.appendChild(interetC);
+				document.getElementsByTagName('tbody')[0].appendChild(container);
+			}
+		//}else{
+			var container = document.createElement('tr');
+			var terme = document.createElement('td');
+			var balanceD = document.createElement('td');
+			var interet = document.createElement('td');
+			var principal = document.createElement('td');
+			var balanceF = document.createElement('td');
+			var interetC = document.createElement('td');
+
+			container.className = 'rows';
+			terme.className = 'termeTd';
+			balanceD.className = 'BalanceDTd';
+			interet.className = 'interetTd';
+			principal.className = 'principalTd';
+			balanceF.className = 'balanceFtd';
+			interetC.className = 'interetCtd';
+
+			terme.innerHTML = No,
+			balanceD.innerHTML = conversion_nombre(arrondi(balanceDepart, 2)),
+			interet.innerHTML = conversion_nombre(arrondi(interetPaye, 2)),
+			principal.innerHTML = conversion_nombre(arrondi(principalPaye, 2)),
+			balanceF.innerHTML = conversion_nombre(arrondi(balanceFin, 2)),
+			interetC.innerHTML = conversion_nombre(arrondi(interetCumule, 2));
+
+			container.appendChild(terme)
+			container.appendChild(balanceD)
+			container.appendChild(interet)
+			container.appendChild(principal)
+			container.appendChild(balanceF)
+			container.appendChild(interetC);
+			
+			corps.appendChild(container);
+
+			for(i; i>=2; i--){
+				No += 1,
+				balanceDepart = balanceFin,
+				interetPaye = balanceDepart * (tx.value/1200),
+				principalPaye = monthly - interetPaye,
+				balanceFin = balanceDepart - principalPaye,
+				interetCumule = interetCumule + interetPaye;
+				
+				var container = document.createElement('tr');
+				var terme = document.createElement('td');
+				var balanceD = document.createElement('td');
+				var interet = document.createElement('td');
+				var principal = document.createElement('td');
+				var balanceF = document.createElement('td');
+				var interetC = document.createElement('td');
+				
+				container.className = 'rows';
+				terme.className = 'termeTd';
+				balanceD.className = 'BalanceDTd';
+				interet.className = 'interetTd';
+				principal.className = 'principalTd';
+				balanceF.className = 'balanceFtd';
+				interetC.className = 'interetCtd';
+
+				terme.innerHTML = No,
+				balanceD.innerHTML = conversion_nombre(arrondi(balanceDepart, 2)),
+				interet.innerHTML = conversion_nombre(arrondi(interetPaye, 2)),
+				principal.innerHTML = conversion_nombre(arrondi(principalPaye, 2)),
+				balanceF.innerHTML = conversion_nombre(arrondi(balanceFin, 2)),
+				interetC.innerHTML = conversion_nombre(arrondi(interetCumule, 2));
+				
+				container.appendChild(terme)
+				container.appendChild(balanceD)
+				container.appendChild(interet)
+				container.appendChild(principal)
+				container.appendChild(balanceF)
+				container.appendChild(interetC);
+				corps.appendChild(container);
+			}
+		//}
+		tableau.appendChild(entete);
+		tableau.appendChild(corps);
+		document.body.appendChild(tableau);
+}
+
+
+echeancier();
