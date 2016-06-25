@@ -12,7 +12,14 @@
 var Pret = (function(){
 		
 		// Initialization
-		var listPret = [];
+		var listPret = [{ 
+				amount: 'Principal',
+				tx : 'Taux',
+				period : 'Durée',
+				payment : 'Paiement',
+				dette: 'Dette Totale',
+				interet: 'Interêts Totaux'
+			}];
 		var principal = 0;
 		var taux = 0;
 		var duree = 0;
@@ -22,6 +29,7 @@ var Pret = (function(){
 		var paiement = '';
 		var formul = null;
 		var calculated = false;
+		var paiement_in_num = 0;
 
 		// Caching the DOM
 		principal = document.getElementById('montant');
@@ -87,6 +95,7 @@ var Pret = (function(){
 		function render(){
 			resultat.textContent = paiement;
 
+			
 
 			if(devise === "USD" && calculated){
 				cours.textContent =  '';
@@ -107,6 +116,7 @@ var Pret = (function(){
 			}else{
 				calculated = true;
 				paiement = arrondi(paiement, 2);
+				paiement_in_num = paiement;
 				paiement = conversion_nombre(paiement, ' ');
 			}
 			render();
@@ -118,17 +128,93 @@ var Pret = (function(){
 		}
 
 		function savePret(){
+			var calc_int = (paiement_in_num * frequence * duree.value) - principal.value;
+			var calc_dette = paiement_in_num * frequence * duree.value;
 			var _temp = {
-				amount : principal.value,
-				tx : taux.value,
-				period : duree.value,
-				payment : paiement+' '+devise
+				amount : principal.value * 1,
+				tx : taux.value+' %',
+				period : duree.value+' ans',
+				payment : paiement,
+				dette: calc_dette,
+				interet: calc_int
 			}
-			listPret.push(_temp);
-			console.log(listPret);
+
+			if(_temp.amount !== '' && _temp.tx !== '' && _temp.period !== '' && _temp.payment !== '' && _temp.dette !== 0 && _temp.interet !== 0){
+				if(listPret.length < 3){
+					listPret.push(_temp);
+				}else{
+					listPret.splice(1, 1);
+					listPret.push(_temp);
+				}
+			}
+			
+			render_comparison(listPret);
 		}
 
 		return {
 			savePret: savePret
 		};
 })()
+
+
+function render_comparison(arg){
+
+	if(typeof arg === 'object' && arg.length === 2){
+		var conteneur = document.createElement('aside');
+		conteneur.className = 'container';
+		conteneur.id = 'there';
+		var captions = document.createElement('p');
+		captions.textContent = 'Comparaison des deux Simulations';
+		conteneur.appendChild(captions);
+
+		for(var i=0; i<arg.length; i++){
+			render_liste(arg[i], i, conteneur);
+		}
+	}else if(typeof arg === 'object' && arg.length > 2){
+		document.body.removeChild(document.getElementById('there'));
+
+		var conteneur = document.createElement('aside');
+		conteneur.className = 'container';
+		conteneur.id = 'there';
+		var captions = document.createElement('p');
+		captions.textContent = 'Comparaison des Simulations';
+		conteneur.appendChild(captions);
+
+		for(var i=0; i<arg.length; i++){
+			render_liste(arg[i], i, conteneur);
+		}
+	}
+
+
+}
+
+
+function render_liste(obj, indx, container){
+	var sous_conteneur = document.createElement('div');
+	sous_conteneur.className = 'parts-container';
+	sous_conteneur.id = (indx === 2) ? 'last' : '';
+	var listes = document.createElement('ul');
+	var liste = []
+
+	for(var i in obj){
+		var ele_liste = document.createElement('li');
+		var span = document.createElement('span')
+		span.className = (indx === 0) ? '' : 'valeurs';
+		if(i === 'payment' || (typeof obj[i] === 'string')){
+			span.textContent = obj[i];
+		}else{
+			span.textContent = conversion_nombre(arrondi(obj[i], 2), ' ');
+		}
+		
+		
+		ele_liste.appendChild(span);
+		liste.push(ele_liste);
+	}
+
+	for (var i = 0; i < liste.length; i++) {
+		listes.appendChild(liste[i])
+	};
+	
+	document.body.appendChild(container).appendChild(sous_conteneur).appendChild(listes);	
+}
+

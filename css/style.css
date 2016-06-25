@@ -1,4 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Lato:400,400italic);
+//@import url(https://fonts.googleapis.com/css?family=Lato:400,400italic);
 
 *{
 	padding: 0;
@@ -7,26 +7,46 @@
 
 
 body{
-	background-image: url('../img/overlay.png');
+	background: url('../img/overlay.png');
 	min-height: 100%;
 	height: auto;
-	font-family: 'Lato', 'Arcon', sans-serif;
+	font-family: 'Open Sans', 'Arcon', sans-serif;
+}
+
+aside#menu{
+	width: 100px;
+	margin: 2%;
+	vertical-align: top;
+	display: inline-block;
+	background-color: #FFF;
+	border: 1px solid #7D7D7D;
+	//box-shadow: 0 0 15px 3px rgba(0,0,0, 0.5);
+	//transition: box-shadow 0.3s;
+}
+
+aside#menu ul{
+	list-style: none;
+	padding: 2%;
 }
 
 .container{
+	display: inline-block;
+	vertical-align: top;
 	max-width: 320px;
-	margin: 2% 2%;
-	box-shadow: 0 0 15px 3px rgba(0,0,0, 0.5);
-	transition: box-shadow 0.3s;
+	margin: 2%;
+	border: 1px solid #7D7D7D;
+	background-color: #fff;
+	//box-shadow: 0 0 15px 3px rgba(0,0,0, 0.5);
+	//transition: box-shadow 0.3s;
 }
 
 .container:hover{
-	box-shadow: 0 0 10px 3px rgba(0,0,0, 0.3);
+	//box-shadow: 0 0 10px 3px rgba(0,0,0, 0.3);
 }
 
 @media (max-width: 480px) {
 	.container{
-		max-width: 390px;
+		max-width: 320px;
 		margin: 2% auto;
 	}
 
@@ -46,26 +66,24 @@ body{
 	}
 }
 
-#form_container, #compare-container{
+#form_container{
 	margin: auto;
-	padding-top: 2%;
-	background-color: #4D6DE3;
-	opacity: 0.7;
+	padding: 2% 0 10% 0;
 }
 
-body div.container form{
+body div.container div#form_container form{
 	position: relative;
 	width: 80%;
 	margin: 2% auto 2px;
-	background-color: #F1FCFD;
+	background-color: #FFF;
 	padding: 5%;
-	color: #393737;
+	color: #727272;
 }
 
 body div.container form label.frequence{
 	font-size: 0.9em;
 	display: block;
-	margin-top: 1%;
+	margin-top: 4%;
 }
 
 body div.container form label.monnaie{
@@ -80,12 +98,12 @@ body div.container form label.monnaie{
 	position: relative;
 	top: 25px;
 	left: 5px;
-	transition: all 0.3s ease;
+	transition: all 0.3s linear;
 }
 
 .label-text-top{
 	position: relative;
-	top: 0px;
+	top: 2px;
 	left: 5px;
 }
 
@@ -95,25 +113,27 @@ body div.container form label.monnaie{
 	width: 70%;
 	height: 25px;
 	padding-left: 2%;
+	margin: 1% 1.5%;
 	background-color: transparent;
 	outline: none;
 	border-style: none;
-	border-bottom: 2px solid #4D6DE3;
-	color: #4D6DE3;
+	border-bottom: 2px solid #727272;
+	color: #727272;
 	font-weight: bold;
+	font-size: 1em;
 	//border: 1px solid red;
 }
 
 #result_box{
-	width: 200px;
+	width: 300px;
 	height: 40px;
-	margin: 2% auto;
-	padding: 2%;
-	//background-color: #FFF; //#FBE0D9;
-	color: #302624;
+	margin: 1% auto;
+	padding-top: 2%;
+	color: #727272;
 	font-weight: bold;
 	font-size: 1.2em;
 	text-align: center;
+	//border: 1px solid red;
 }
 
 #monnaie, #resultat{
@@ -121,49 +141,62 @@ body div.container form label.monnaie{
 }
 
 #monnaie{
-	width: 95px;
-	text-align: left;
 	font-size: 0.7em;
 	vertical-align: top;
 }
 
-#resultat{
-	width: 95px;
-	text-align: right;
+button{
+	display: block;
+	width: 60px;
+	margin: 3% auto;
+	padding: 1%;
+	color: inherit;
+	font-weight: bold;
+	border: 1px solid #7D7D7D;
+	outline: none;
+	cursor: pointer;
 }
 
 
 /****************************************
-****** Tables rules *********************
+****** Compares section rules ***********
 ****************************************/
-#compare-container{
-	margin: auto;
-	width: 100%;
+aside.container{
+	padding: 0 0 1% 0;
+	color: #7D7D7D;
+}
+
+aside.container p{
 	text-align: center;
-}
-
-table.simulation{
-	display: inline-block;
+	background-color: #D7D7D7;
 	margin: 0;
-	background-color: #F1FCFD;
+	padding: 5px;
+	font-size: 1.05em;
+}
+
+div.parts-container{
+	display: inline-block;
 	//border: 1px solid red;
+	text-align: right;
+	padding: 0 5px;
+	margin: 0;
 }
 
-table.simulation caption{
-	//border: 1px solid #302624;
-	padding: 1%;
+div#last{
+	background-color: #C2C2C2;
 }
 
-table.simulation tbody tr td{
-	width: 72px;
-	border: 1px solid #4D6DE3;
-	padding: 1.5%;
+.parts-container ul{
+	list-style: none;
+	padding-left: 0;
+	margin: ;
 }
 
-#tab1{
-	
+.parts-container ul li{
+	width: 94px;
+	border-top: 1px solid #7D7D7D;
 }
 
-#tab2{
-
+.parts-container ul li span.valeurs{
+	font-weight: bold;
 }
