@@ -235,7 +235,7 @@ var Pret = (function(){
 				if(document.getElementsByTagName('table')[0] !== undefined){
 					document.getElementsByTagName('table')[0].parentNode.removeChild(document.getElementsByTagName('table')[0]);
 				}
-				document.body.appendChild(tableau);
+				document.getElementById('analyse').appendChild(tableau);
 		}
 
 		function calculPaiement(){
@@ -304,7 +304,7 @@ function render_comparison(arg){
 			render_liste(arg[i], i, conteneur);
 		}
 	}else if(typeof arg === 'object' && arg.length > 2){
-		document.body.removeChild(document.getElementById('there'));
+		document.getElementById('analyse').removeChild(document.getElementById('there'));
 
 		var conteneur = document.createElement('aside');
 		conteneur.className = 'container';
@@ -348,5 +348,5 @@ function render_liste(obj, indx, container){
 		listes.appendChild(liste[i])
 	};
 	
-	document.body.appendChild(container).appendChild(sous_conteneur).appendChild(listes);	
+	document.getElementById('analyse').appendChild(container).appendChild(sous_conteneur).appendChild(listes);	
 }

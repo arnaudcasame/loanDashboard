@@ -7,7 +7,8 @@
 
 
 body{
-	background: url('../img/overlay.png');
+
+	background: url('../img/bg01.png') #A7A7A7;
 	min-height: 100%;
 	height: auto;
 	font-family: 'Open Sans', 'Arcon', sans-serif;
@@ -15,7 +16,7 @@ body{
 
 aside#menu{
 	width: 100px;
-	margin: 2%;
+	margin: 1%;
 	vertical-align: top;
 	display: inline-block;
 	background-color: #FFF;
@@ -32,8 +33,8 @@ aside#menu ul{
 .container{
 	display: inline-block;
 	vertical-align: top;
-	max-width: 320px;
-	margin: 2%;
+	max-width: 380px;
+	margin: 1%;
 	border: 1px solid #7D7D7D;
 	background-color: #fff;
 	//box-shadow: 0 0 15px 3px rgba(0,0,0, 0.5);
@@ -165,9 +166,9 @@ button{
 /****************************************
 ****** Compares section rules ***********
 ****************************************/
-aside.container{
-	padding: 0 0 1% 0;
-	color: #7D7D7D;
+body div#analyse aside.container{
+	//padding: 0 0 1% 0;
+	//
 }
 
 aside.container p{
@@ -180,9 +181,10 @@ aside.container p{
 
 div.parts-container{
 	display: inline-block;
+	//width: 33%;
+	color: #7D7D7D;
 	//border: 1px solid red;
 	text-align: right;
-	padding: 0 5px;
 	margin: 0;
 }
 
@@ -207,24 +209,23 @@ div#last{
 
 /* Styling the echeancier table */
 
-body table{
-	width: 600px;
+body div#analyse table{
+	//width: 600px;
 	background-color: #C2C2C2;
 	color: #7D7D7D;
 	text-align: center;
 	border: 1px solid #7D7D7D;
 }
 
-body > table > caption{
-	border-top : 1px solid #7D7D7D;
+body >  div#analyse > table > caption{
+	border-top: 1px solid #7D7D7D;
 	border-left: 1px solid #7D7D7D;
 	border-right: 1px solid #7D7D7D;
 }
 
-body > table > caption, body > table > thead{
+body >  div#analyse > table > caption, body > div#analyse > table > thead{
 	background-color: #C2C2C2;
 	font-weight: bold;
-	//padding: 0;
 }
 
 body table tbody tr.rows td{
@@ -248,4 +249,10 @@ body table tbody tr.rows td:hover{
 	    -ms-transform: scale(1.1, 1.1);
 	     -o-transform: scale(1.1, 1.1);
 	        transform: scale(1.1, 1.1);
+}
+
+body div#analyse{
+	display: inline-block;
+	margin: 1%;
+	min-width: 350px;
 }
