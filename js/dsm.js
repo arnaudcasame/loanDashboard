@@ -42,8 +42,20 @@ var nono = (function(){
 		}
 	}
 
+	function createjs(tag){
+		if(typeof tag === 'string'){
+			if(tags.test(tag)){
+				recup = document.createElement(tag);
+				return recup;
+			}else{
+				return undefined;
+			}
+		}
+	}
+
 	return{
 		select : selection,
-		css : style
+		css : style,
+		createjs : createjs
 	};
 })();
