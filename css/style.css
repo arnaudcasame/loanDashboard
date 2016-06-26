@@ -177,6 +177,8 @@ aside.container p{
 	margin: 0;
 	padding: 5px;
 	font-size: 1.05em;
+	color: #7D7D7D;
+	border-bottom: 1px solid #7D7D7D;
 }
 
 div.parts-container{
@@ -185,22 +187,26 @@ div.parts-container{
 	color: #7D7D7D;
 	//border: 1px solid red;
 	text-align: right;
-	margin: 0;
 }
 
-div#last{
-	background-color: #C2C2C2;
+div.parts-container:last-child{
+	background-color: #D7D7D7;
 }
 
 .parts-container ul{
 	list-style: none;
 	padding-left: 0;
-	margin: ;
+	margin: 0 5px;
+}
+
+.parts-container ul li:last-child{
+	border: none;
 }
 
 .parts-container ul li{
 	width: 94px;
-	border-top: 1px solid #7D7D7D;
+	border-bottom: 1px solid #7D7D7D;
+	padding: 0 1%;
 }
 
 .parts-container ul li span.valeurs{
@@ -211,7 +217,7 @@ div#last{
 
 body div#analyse table{
 	//width: 600px;
-	background-color: #C2C2C2;
+	background-color: #D7D7D7;
 	color: #7D7D7D;
 	text-align: center;
 	border: 1px solid #7D7D7D;
@@ -223,9 +229,13 @@ body >  div#analyse > table > caption{
 	border-right: 1px solid #7D7D7D;
 }
 
-body >  div#analyse > table > caption, body > div#analyse > table > thead{
-	background-color: #C2C2C2;
-	font-weight: bold;
+body div#analyse table caption, body div#analyse table thead{
+	background-color: #D7D7D7;
+}
+
+body div#analyse table thead tr th{
+	font-weight: normal;
+	padding: 1%;
 }
 
 body table tbody tr.rows td{

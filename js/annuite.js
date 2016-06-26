@@ -115,7 +115,7 @@ var Pret = (function(){
 		}
 
 		function echeancier(){
-
+			if(paiement_in_num !== 0){
 				var tableau = document.createElement('table');
 				var entete = document.createElement('thead');
 				var corps = document.createElement('tbody');
@@ -235,7 +235,11 @@ var Pret = (function(){
 				if(document.getElementsByTagName('table')[0] !== undefined){
 					document.getElementsByTagName('table')[0].parentNode.removeChild(document.getElementsByTagName('table')[0]);
 				}
+				if(document.getElementById('analyse').hasChildNodes()){
+					document.getElementById('analyse').replaceChild(tableau, document.getElementById('analyse').firstChild);
+				}
 				document.getElementById('analyse').appendChild(tableau);
+			}
 		}
 
 		function calculPaiement(){
@@ -304,7 +308,6 @@ function render_comparison(arg){
 			render_liste(arg[i], i, conteneur);
 		}
 	}else if(typeof arg === 'object' && arg.length > 2){
-		document.getElementById('analyse').removeChild(document.getElementById('there'));
 
 		var conteneur = document.createElement('aside');
 		conteneur.className = 'container';
@@ -325,7 +328,7 @@ function render_comparison(arg){
 function render_liste(obj, indx, container){
 	var sous_conteneur = document.createElement('div');
 	sous_conteneur.className = 'parts-container';
-	sous_conteneur.id = (indx === 2) ? 'last' : '';
+
 	var listes = document.createElement('ul');
 	var liste = []
 
@@ -347,6 +350,8 @@ function render_liste(obj, indx, container){
 	for (var i = 0; i < liste.length; i++) {
 		listes.appendChild(liste[i])
 	};
-	
+	if(document.getElementById('analyse').hasChildNodes()){
+		document.getElementById('analyse').replaceChild(container, document.getElementById('analyse').firstChild);
+	}
 	document.getElementById('analyse').appendChild(container).appendChild(sous_conteneur).appendChild(listes);	
 }
