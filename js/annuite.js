@@ -20,6 +20,7 @@ var Pret = (function(){
 				dette: 'Dette Totale',
 				interet: 'Interêts Totaux'
 			}];
+		var echelon = [];
 		var montant = 0;
 		var taux = 0;
 		var duree = 0;
@@ -114,127 +115,64 @@ var Pret = (function(){
 			}
 		}
 
+		function echelonner(principal, taux, duree, frequence, paiement){
+			echelon = [];
+			for(var i=0; i < frequence*duree; i++){
+
+				var No = i+1, bDep = (No===1) ? principal : bFin, 
+				intP = bDep * ((taux/100)/frequence), 
+				prinP = paiement - intP, 
+				bFin = bDep - prinP, 
+				intCum = (No===1) ? intP : (intP + intCum);
+
+				var obj = {
+					'No': arrondi(No, 2),
+					'Balance Départ':  arrondi(bDep, 2),
+					'Intéret Payé': arrondi(intP, 2),
+					'Principal Payé': arrondi(prinP, 2),
+					'Balance Fin': arrondi(bFin, 2),
+					'Intérêt Cumulé': arrondi(intCum, 2)
+				}
+				echelon.push(obj);
+			}
+		}
+
 		function echeancier(){
 			if(paiement_in_num !== 0){
-				var tableau = document.createElement('table');
-				var entete = document.createElement('thead');
-				var corps = document.createElement('tbody');
-				var caption = document.createElement('caption');
-				
-					var container0 = document.createElement('tr');
-					var terme0 = document.createElement('th');
-					var balanceD0 = document.createElement('th');
-					var interet0 = document.createElement('th');
-					var principal0 = document.createElement('th');
-					var balanceF0 = document.createElement('th');
-					var interetC0 = document.createElement('th');
+				var tableau = nono.create('table');
+				var desc = nono.create('caption');
+				nono.stickTo(tableau, desc).display('Echéancier');
+				var entete = nono.create('thead');
+				var corps = nono.create('tbody');
 
-					caption.innerHTML = 'Echéancier';
-					terme0.innerHTML = 'No';
-					balanceD0.innerHTML = 'Balance Départ';
-					interet0.innerHTML = 'Intérêt Payé';
-					principal0.innerHTML = 'Principal Payé';
-					balanceF0.innerHTML = 'Balance Fin';
-					interetC0.innerHTML = 'Intérêt Cumulé';
-
-					tableau.appendChild(caption);
-					container0.appendChild(terme0);
-					container0.appendChild(balanceD0);
-					container0.appendChild(interet0);
-					container0.appendChild(principal0);
-					container0.appendChild(balanceF0);
-					container0.appendChild(interetC0);
-
-					entete.appendChild(container0);
-				
-
-				var monthly = paiement_in_num;
-				var i = frequence * duree.value, 
-				No = i - (i-1),
-				balanceDepart = montant.value,
-				interetPaye = balanceDepart * ((taux.value/100)/frequence),
-				principalPaye = monthly - interetPaye,
-				balanceFin = balanceDepart - principalPaye;
-				var interetCumule = interetPaye;
-
-				
-					var container = document.createElement('tr');
-					var terme = document.createElement('td');
-					var balanceD = document.createElement('td');
-					var interet = document.createElement('td');
-					var principal = document.createElement('td');
-					var balanceF = document.createElement('td');
-					var interetC = document.createElement('td');
-
-					container.className = 'rows';
-					terme.className = 'termeTd';
-					balanceD.className = 'BalanceDTd';
-					interet.className = 'interetTd';
-					principal.className = 'principalTd';
-					balanceF.className = 'balanceFtd';
-					interetC.className = 'interetCtd';
-
-					terme.innerHTML = No,
-					balanceD.innerHTML = conversion_nombre(arrondi(balanceDepart, 2), ' '),
-					interet.innerHTML = conversion_nombre(arrondi(interetPaye, 2), ' '),
-					principal.innerHTML = conversion_nombre(arrondi(principalPaye, 2), ' '),
-					balanceF.innerHTML = conversion_nombre(arrondi(balanceFin, 2), ' '),
-					interetC.innerHTML = conversion_nombre(arrondi(interetCumule, 2), ' ');
-
-					container.appendChild(terme)
-					container.appendChild(balanceD)
-					container.appendChild(interet)
-					container.appendChild(principal)
-					container.appendChild(balanceF)
-					container.appendChild(interetC);
-					
-					corps.appendChild(container);
-
-					for(i; i>=2; i--){
-						No += 1,
-						balanceDepart = balanceFin,
-						interetPaye = balanceDepart * ((taux.value/100)/frequence),
-						principalPaye = monthly - interetPaye,
-						balanceFin = balanceDepart - principalPaye,
-						interetCumule = interetCumule + interetPaye;
-						
-						var container = document.createElement('tr');
-						var terme = document.createElement('td');
-						var balanceD = document.createElement('td');
-						var interet = document.createElement('td');
-						var principal = document.createElement('td');
-						var balanceF = document.createElement('td');
-						var interetC = document.createElement('td');
-						
-						container.className = 'rows';
-						terme.className = 'termeTd';
-						balanceD.className = 'BalanceDTd';
-						interet.className = 'interetTd';
-						principal.className = 'principalTd';
-						balanceF.className = 'balanceFtd';
-						interetC.className = 'interetCtd';
-
-						terme.innerHTML = No,
-						balanceD.innerHTML = conversion_nombre(arrondi(balanceDepart, 2), ' '),
-						interet.innerHTML = conversion_nombre(arrondi(interetPaye, 2), ' '),
-						principal.innerHTML = conversion_nombre(arrondi(principalPaye, 2), ' '),
-						balanceF.innerHTML = conversion_nombre(arrondi(balanceFin, 2), ' '),
-						interetC.innerHTML = conversion_nombre(arrondi(interetCumule, 2), ' ');
-						
-						container.appendChild(terme)
-						container.appendChild(balanceD)
-						container.appendChild(interet)
-						container.appendChild(principal)
-						container.appendChild(balanceF)
-						container.appendChild(interetC);
-						corps.appendChild(container);
+				for (var i = 0; i < echelon.length; i++) {
+					var range = nono.create('tr');
+					if(i === 0){
+						var ligne = nono.create('tr');
 					}
-
-				tableau.appendChild(entete);
-				tableau.appendChild(corps);
-				if(document.getElementsByTagName('table')[0] !== undefined){
-					document.getElementsByTagName('table')[0].parentNode.removeChild(document.getElementsByTagName('table')[0]);
+					
+					for(var chiffre in echelon[i]){
+						if(i === 0){
+							var celth = nono.create('th');
+							nono.stickTo(ligne, celth).display(chiffre);
+							nono.stickTo(entete, ligne);
+						}
+						var celtd = nono.create('td');
+						if(chiffre === 'No'){
+							nono.stickTo(range, celtd)
+						.display(echelon[i][chiffre]);
+						}else{
+							nono.stickTo(range, celtd)
+						.display(conversion_nombre(echelon[i][chiffre], ' '));
+						}	
+					}
+					
+					nono.stickTo(corps, range);
 				}
+
+				nono.stickTo(tableau, entete);
+				nono.stickTo(tableau, corps);
+				
 				if(document.getElementById('analyse').hasChildNodes()){
 					document.getElementById('analyse').replaceChild(tableau, document.getElementById('analyse').firstChild);
 				}
@@ -248,6 +186,7 @@ var Pret = (function(){
 				paiement = (montant !== '') ? 'Calculating...' : '';
 			}else{
 				calculated = true;
+				echelonner(montant.value, taux.value, duree.value, frequence, paiement);
 				paiement = arrondi(paiement, 2);
 				paiement_in_num = paiement;
 				paiement = conversion_nombre(paiement, ' ');
@@ -273,7 +212,12 @@ var Pret = (function(){
 				interet: calc_int
 			}
 
-			if(_temp.amount !== '' && _temp.tx !== '' && _temp.period !== '' && _temp.payment !== '' && _temp.dette !== 0 && _temp.interet !== 0){
+			if(_temp.amount !== '' 
+				&& _temp.tx !== '' 
+				&& _temp.period !== '' 
+				&& _temp.payment !== '' 
+				&& _temp.dette !== 0 
+				&& _temp.interet !== 0){
 				if(listPret.length < 3){
 					listPret.push(_temp);
 				}else{
