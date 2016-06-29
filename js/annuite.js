@@ -244,7 +244,7 @@ function render_comparison(arg){
 		var conteneur = document.createElement('aside');
 		conteneur.className = 'container';
 		conteneur.id = 'there';
-		var captions = nono.createjs('p');
+		var captions = nono.create('p');
 		captions.textContent = 'Comparaison des deux Simulations';
 		conteneur.appendChild(captions);
 
@@ -264,8 +264,6 @@ function render_comparison(arg){
 			render_liste(arg[i], i, conteneur);
 		}
 	}
-
-
 }
 
 

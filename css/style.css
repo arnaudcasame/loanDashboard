@@ -242,7 +242,8 @@ body div#analyse table{
 	top: 200px;
 	table-layout: fixed;
 	border-collapse: collapse;
-	width: 450px;
+	max-width: 450px;
+	width: 100%;
 	color: #7D7D7D;
 	text-align: center;
 	border: 1px solid #7D7D7D;
@@ -283,6 +284,21 @@ body table tbody tr td:hover{
 	    -ms-transform: scale(1.1, 1.1);
 	     -o-transform: scale(1.1, 1.1);
 	        transform: scale(1.1, 1.1);
+}
+
+@media (max-width: 480px) {
+	body div#analyse table{
+		top: 0;
+	}
+
+	body table thead tr th{
+		font-size: 0.8em;
+	}
+
+	body table tbody tr td{
+		padding: 0;
+		font-size: 0.8em;
+	}
 }
 
 body div#analyse{
