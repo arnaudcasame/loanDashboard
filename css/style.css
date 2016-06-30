@@ -11,7 +11,7 @@ body{
 	background: url('../img/bg01.png') #A7A7A7;
 	min-height: 100%;
 	height: auto;
-	font-family: 'Open Sans', 'Arcon', sans-serif;
+	font-family: 'Source Sans Pro', 'Arcon', sans-serif;
 }
 
 aside#menu{
@@ -30,15 +30,65 @@ aside#menu ul{
 	padding: 2%;
 }
 
-.container{
+body div.container{
 	display: inline-block;
 	vertical-align: top;
 	max-width: 380px;
-	margin: 1%;
-	border: 1px solid #7D7D7D;
-	background-color: #fff;
+	width: 100%;
+	margin: 1% 0 0 1%;
+	//border: 1px solid #7D7D7D;
+	//background-color: #fff;
 	//box-shadow: 0 0 15px 3px rgba(0,0,0, 0.5);
 	//transition: box-shadow 0.3s;
+}
+
+body div.container div.unit_contain{
+	width: 100%;
+	height: 90px;
+	background-color: #fff;
+	border-top: 4px solid #7D7D7D;
+	color: #727272;
+	margin-bottom: 10px;
+}
+
+body div.container div.unit_contain div.infos p{
+	margin: 0;
+	font-size: 0.9em;
+}
+
+body div.container div.unit_contain div.infos h3{
+	padding: 5px 0 0 0;
+	margin: 0;
+	font-size: 1em;
+	color: #7D7D7D;
+	text-align: center;
+}
+
+body div.container div.unit_contain div.logo,
+body div.container div.unit_contain div.infos{
+	display: inline-block;
+	height: 90px;
+	margin: 0;
+}
+
+body div.container div.unit_contain div.logo{
+	width: 30%;
+	background-image: url('../img/overlay.png');
+	background-color: rgba(125, 125, 125, 1);
+	color: #FFF;
+	font-size: 3em;
+	text-align: center;
+}
+
+body div.container div.unit_contain div.logo i.fa{
+	vertical-align: middle;
+	margin-top: 15px;
+}
+
+body div.container div.unit_contain div.infos{
+	width: 69.1%;
+	//background-color: rgba(125, 125, 125, 0.5);
+	vertical-align: top;
 }
 
 .container:hover{
@@ -71,13 +121,14 @@ aside#menu ul{
 	position: relative;
 	margin: auto;
 	padding: 2% 0 10% 0;
+	background-color: #FFF;
 }
 
 body div.container div#form_container form{
 	position: relative;
 	width: 80%;
 	margin: 2% auto 2px;
-	background-color: #FFF;
+	
 	padding: 3%;
 	color: #727272;
 }
@@ -198,7 +249,7 @@ aside.container p{
 	background-color: #D7D7D7;
 	margin: 0;
 	padding: 5px;
-	font-size: 1.05em;
+	font-size: 1em;
 	color: #7D7D7D;
 	border-bottom: 1px solid #7D7D7D;
 }
@@ -229,20 +280,23 @@ div.parts-container:last-child{
 	width: 94px;
 	border-bottom: 1px solid #7D7D7D;
 	padding: 0 1%;
+	font-size: 0.9em;
 }
 
 .parts-container ul li span.valeurs{
 	font-weight: bold;
 }
 
-/* Styling the echeancier table */
+/****************************************
+****** Echeancier section rules *********
+****************************************/
 
 body div#analyse table{
 	position : absolute;
 	top: 200px;
 	table-layout: fixed;
 	border-collapse: collapse;
-	max-width: 450px;
+	max-width: 480px;
 	width: 100%;
 	color: #7D7D7D;
 	text-align: center;
@@ -305,5 +359,5 @@ body div#analyse{
 	display: inline-block;
 	position: relative;
 	margin: 1%;
-	min-width: 350px;
+	min-width: 500px;
 }
