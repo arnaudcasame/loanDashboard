@@ -126,13 +126,13 @@ var Pret = (function(){
 				intCum = (No===1) ? intP : (intP + intCum);
 
 				var obj = {
-					'No': arrondi(No, 2),
+					'No': No,
 					'Balance Départ':  arrondi(bDep, 2),
 					'Intéret Payé': arrondi(intP, 2),
 					'Principal Payé': arrondi(prinP, 2),
 					'Balance Fin': arrondi(bFin, 2),
 					'Intérêt Cumulé': arrondi(intCum, 2)
-				}
+				};
 				echelon.push(obj);
 			}
 		}
@@ -210,14 +210,9 @@ var Pret = (function(){
 				payment : paiement,
 				dette: calc_dette,
 				interet: calc_int
-			}
+			};
 
-			if(_temp.amount !== '' 
-				&& _temp.tx !== '' 
-				&& _temp.period !== '' 
-				&& _temp.payment !== '' 
-				&& _temp.dette !== 0 
-				&& _temp.interet !== 0){
+			if(_temp.amount !== '' && _temp.tx !== '' && _temp.period !== '' && _temp.payment !== '' && _temp.dette !== 0 && _temp.interet !== 0){
 				if(listPret.length < 3){
 					listPret.push(_temp);
 				}else{
@@ -228,14 +223,7 @@ var Pret = (function(){
 			
 			render_comparison(listPret);
 		}
-
-
-		// The revealing section
-		return {
-			//savePret: savePret,
-			//echeancier: echeancier
-		};
-})()
+})();
 
 
 function render_comparison(arg){
@@ -289,9 +277,10 @@ function render_liste(obj, indx, container){
 		liste.push(ele_liste);
 	}
 
-	for (var i = 0; i < liste.length; i++) {
-		listes.appendChild(liste[i])
+	for(var i=0; i<liste.length; i++) {
+		listes.appendChild(liste[i]);
 	};
+
 	if(document.getElementById('analyse').hasChildNodes()){
 		document.getElementById('analyse').replaceChild(container, document.getElementById('analyse').firstChild);
 	}
