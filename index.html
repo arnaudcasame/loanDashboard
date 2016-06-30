@@ -4,12 +4,15 @@
 		<meta charset="utf-8">
 
 		<title>Annuité</title>
-		<link rel="stylesheet" href="css/font-awesome.min.css">
+		<link rel="stylesheet" href="css/font-awesome.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
 		<link rel="icon" href="img/finance_pink.ico">
 	</head>
 	<body>
-		<aside id="menu">
+		<header id='head'>
+			
+		</header>
+		<!-- <aside id="menu">
 			<ul>
 				<li>Menu</li>
 				<li>Menu</li>
@@ -20,13 +23,60 @@
 				<li>Menu</li>
 				<li>Menu</li>
 			</ul>
-		</aside>
+		</aside> -->
 		<div class="container">
-			<div>Taux de change API</div>
-			<div>Taux d'intérêt API</div>
-			<div>Success Quotes API</div>
-			<div>Weather API</div>
-			<div>Search terms definitions</div>
+			<div class='unit_contain'>
+				<div class='logo'>
+					<i class='fa fa-money'></i>
+				</div>
+				<div class='infos'>
+					<h3>Taux de change</h3>
+				</div>
+			</div>
+			<div class='unit_contain'>
+				<div class='logo'>
+					<i class='fa fa-percent'></i>
+				</div>
+				<div class='infos'>
+					<h3>Taux d'intérêt</h3>
+				</div>
+			</div>
+			<div class='unit_contain'>
+				<div class='logo'>
+					<i class='fa fa-quote-left'></i>
+				</div>
+				<div class='infos'>
+					<h3>Success Quotes</h3>
+					<p>
+					"He who is not courageous enough to take risks will accomplish nothing in life. "
+					</p>
+					<span>- Muhammad Ali</span>
+				</div>
+			</div>
+			<div class='unit_contain'>
+				<div class='logo'>
+					<i class='fa fa-cloud'></i>
+				</div>
+				<div class='infos'>
+					<h3>Weather</h3>
+				</div>
+			</div>
+			<div class='unit_contain'>
+				<div class='logo'>
+					<i class='fa fa-search'></i>
+				</div>
+				<div class='infos'>
+					<h3>Search</h3>
+				</div>
+			</div>
+			<div class='unit_contain'>
+				<div class='logo'>
+					<i class='fa fa-calendar'></i>
+				</div>
+				<div class='infos'>
+					<h3>Calendar</h3>
+				</div>
+			</div>
 		</div>
 		<div class="container">
 			<div id='form_container'>
@@ -111,7 +161,6 @@
 				$('div.logo').removeClass('logo-active');
 				*/
 			});
-
 		});
 		</script>
 	</body>
