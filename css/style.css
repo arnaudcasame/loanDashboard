@@ -7,12 +7,78 @@
 
 
 body{
-
+	padding: 0;
 	background: url('../img/bg01.png') #A7A7A7;
 	min-height: 100%;
 	height: auto;
 	font-family: 'Source Sans Pro', 'Arcon', sans-serif;
 }
+
+/****************************************
+****** header and search bar rules ******
+****************************************/
+
+body header#head{
+	position: fixed;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 50px;
+	background-color: #7D7D7D;
+	z-index: 100;
+}
+
+body header#head div#search_contain{
+	width: 31%;
+	text-align: right;
+	margin: 10px 10px 0 0;
+	position: relative;
+}
+
+body header#head div#search_contain input#searchin{
+	width: 400px;
+	//height: 30px;
+	background-color: rgba(207, 207, 207, 0.5);
+	border-style: none;
+	padding: 5px;
+	outline: none;
+	color: #FFF;
+	//font-weight: bold;
+	font-size: 1.1em;
+}
+
+::-webkit-input-placeholder{
+	color: #FFF;
+}
+
+::-ms-input-placeholder{
+	color: #FFF;
+}
+
+::-moz-placeholder{
+	color: #FFF;
+}
+
+body header#head div#search_contain button#search{
+	position: absolute;
+	left: 385px;
+	top: 5px;
+	width: 10px;
+}
+
+body header#head div#search_contain button#search,
+body header#head div#search_contain input{
+	display: inline-block;
+}
+
+body header#head div#search_contain button#search i.fa{
+	font-size: 1.1em;
+	color: #FFF;
+}
+
+/****************************************
+********** Left side Menu rules *********
+****************************************/
 
 aside#menu{
 	width: 100px;
@@ -35,7 +101,7 @@ body div.container{
 	vertical-align: top;
 	max-width: 380px;
 	width: 100%;
-	margin: 1% 0 0 1%;
+	margin: 3.5% 0 0 1%;
 	//border: 1px solid #7D7D7D;
 	//background-color: #fff;
 	//box-shadow: 0 0 15px 3px rgba(0,0,0, 0.5);
@@ -173,7 +239,7 @@ body div.container form label.monnaie{
 	border-bottom: 2px solid #727272;
 	color: #727272;
 	font-weight: bold;
-	font-size: 1em;
+	font-size: 0.95em;
 	//border: 1px solid red;
 }
 
