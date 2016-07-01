@@ -144,7 +144,6 @@ var Pret = (function(){
 				echelon.push(obj);
 			}
 			dataP.push(etiqs, intsPaye, prinsPaye);
-
 		}
 
 		function renderPlot(donnees){
