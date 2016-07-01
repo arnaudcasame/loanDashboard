@@ -21,6 +21,7 @@ var Pret = (function(){
 				interet: 'Interêts Totaux'
 			}];
 		var echelon = [];
+		var dataP = [];
 		var montant = 0;
 		var taux = 0;
 		var duree = 0;
@@ -31,6 +32,7 @@ var Pret = (function(){
 		var formul = null;
 		var calculated = false;
 		var paiement_in_num = 0;
+
 
 		// Caching the DOM
 		montant = document.getElementById('montant');
@@ -43,6 +45,7 @@ var Pret = (function(){
 		var cours = document.getElementById('monnaie');
 		var bouton_save = document.getElementById('save');
 		var  bouton_echeancier = document.getElementById('eche');
+		var ctx = document.getElementById('myChart');
 	
 
 		//binding Events
@@ -117,6 +120,8 @@ var Pret = (function(){
 
 		function echelonner(principal, taux, duree, frequence, paiement){
 			echelon = [];
+			var etiqs = [], intsPaye = [], prinsPaye = []; 
+			dataP = [];
 			for(var i=0; i < frequence*duree; i++){
 
 				var No = i+1, bDep = (No===1) ? principal : bFin, 
@@ -133,8 +138,71 @@ var Pret = (function(){
 					'Balance Fin': arrondi(bFin, 2),
 					'Intérêt Cumulé': arrondi(intCum, 2)
 				};
+				etiqs.push('paiement '+No);
+				intsPaye.push(arrondi(intCum, 2));
+				prinsPaye.push(arrondi(bFin, 2));
 				echelon.push(obj);
 			}
+			dataP.push(etiqs, intsPaye, prinsPaye);
+
+		}
+
+		function renderPlot(donnees){
+			var context = ctx.getContext('2d');
+
+			var data = {
+				labels: donnees[0],
+				datasets: [
+					{
+						label: "Interêts payés",
+						fill: true,
+						lineTension: 0.1,
+						backgroundColor: "rgba(75,192,192,0.4)",
+						borderColor: "rgba(75,192,192,1)",
+						borderCapStyle: 'butt',
+						borderDash: [],
+						borderDashOffset: 0.0,
+						borderJoinStyle: 'miter',
+						pointBorderColor: "rgba(75,192,192,1)",
+						pointBackgroundColor: "#fff",
+						pointBorderWidth: 1,
+						pointHoverRadius: 5,
+						pointHoverBackgroundColor: "rgba(75,192,192,1)",
+						pointHoverBorderColor: "rgba(220,220,220,1)",
+						pointHoverBorderWidth: 2,
+						pointRadius: 1,
+						pointHitRadius: 10,
+						data: donnees[1],
+						spanGaps: false,
+					},
+					{
+						label: "Principaux payés",
+						fill: true,
+						lineTension: 0.1,
+						backgroundColor: "rgba(255, 127, 80, 0.4)",
+						borderColor: "rgba(255, 127, 80, 1)",
+						borderCapStyle: 'butt',
+						borderDash: [],
+						borderDashOffset: 0.0,
+						borderJoinStyle: 'miter',
+						pointBorderColor: "coral",
+						pointBackgroundColor: "#fff",
+						pointBorderWidth: 1,
+						pointHoverRadius: 5,
+						pointHoverBackgroundColor: "rgba(255, 127, 80, 1)",
+						pointHoverBorderColor: "rgba(220,220,220,1)",
+						pointHoverBorderWidth: 2,
+						pointRadius: 1,
+						pointHitRadius: 10,
+						data: donnees[2],
+						spanGaps: false,
+					}
+				]
+			};
+
+			var myLineChart = Chart.Line(context, {
+				data: data
+			});
 		}
 
 		function echeancier(){
@@ -184,14 +252,18 @@ var Pret = (function(){
 			paiement = (montant.value*((taux.value/100)/frequence))/(1 - Math.pow(1 + ((taux.value/100)/frequence), - (duree.value*frequence)));
 			if (isNaN(paiement) || paiement === Infinity){
 				paiement = (montant !== '') ? 'Calculating...' : '';
+				renderPlot([[], [], []]);
 			}else{
 				calculated = true;
 				echelonner(montant.value, taux.value, duree.value, frequence, paiement);
 				paiement = arrondi(paiement, 2);
 				paiement_in_num = paiement;
 				paiement = conversion_nombre(paiement, ' ');
+				renderPlot(dataP);
+				//console.log(dataP);
 			}
 			render();
+
 		}
 
 		function choixMonnaie(theOne){
@@ -223,6 +295,7 @@ var Pret = (function(){
 			
 			render_comparison(listPret);
 		}
+		renderPlot([[], [], []]);
 })();
 
 

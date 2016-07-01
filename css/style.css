@@ -303,6 +303,17 @@ button i.fa{
 }
 
 /****************************************
+******** Canvas section rules ***********
+****************************************/
+
+.canvas-holder{
+	width: 500px;
+	margin: 3.5% 0 0 1%;
+	background-color: #FFF;
+	display: inline-block;
+}
+
+/****************************************
 ****** Compares section rules ***********
 ****************************************/
 body div#analyse aside.container{
