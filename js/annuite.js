@@ -259,9 +259,15 @@ var Pret = (function(){
 
 		function calculPaiement(){
 			paiement = (montant.value*((taux.value/100)/frequence))/(1 - Math.pow(1 + ((taux.value/100)/frequence), - (duree.value*frequence)));
-			if (isNaN(paiement) || paiement === Infinity){
+			
+			if(montant.value === '' && taux.value === '' && duree.value === ''){
+				paiement = '';
+				renderPlot([[], [], []]);
+				devise = '';
+			}else if(isNaN(paiement) || paiement === Infinity){
 				paiement = (montant !== '') ? 'Calculating...' : '';
 				renderPlot([[], [], []]);
+				devise = '';
 			}else{
 				calculated = true;
 				echelonner(montant.value, taux.value, duree.value, frequence, paiement);
@@ -269,10 +275,13 @@ var Pret = (function(){
 				paiement_in_num = paiement;
 				paiement = conversion_nombre(paiement, ' ');
 				renderPlot(dataP);
-				//console.log(dataP);
+				for(var i=0; i<3; i++){
+					if(monnaie[i].checked === true){
+						devise = monnaie[i].value;
+					}
+				}
 			}
 			render();
-
 		}
 
 		function choixMonnaie(theOne){
