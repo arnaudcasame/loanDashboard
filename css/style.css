@@ -474,3 +474,8 @@ body div#analyse{
 	margin: 3.5% 0 0 1%;
 	min-width: 500px;
 }
+
+body div.container div#comparaison{
+	margin-top: 1%;
+	background-color: #FFF;
+}
