@@ -45,7 +45,7 @@ var Pret = (function(){
 		var cours = document.getElementById('monnaie');
 		var bouton_save = document.getElementById('save');
 		var  bouton_echeancier = document.getElementById('eche');
-		var ctx = document.getElementById('myChart');
+		
 	
 
 		//binding Events
@@ -147,6 +147,15 @@ var Pret = (function(){
 		}
 
 		function renderPlot(donnees){
+			var canholder = document.getElementById('canvas-holder');
+			var ctx = nono.create('canvas');
+			ctx.id = 'myChart';
+			ctx.style.width = 250 + 'px';
+			ctx.style.height = 125 + 'px';
+			if(canholder.hasChildNodes()){
+				canholder.removeChild(document.getElementById('myChart'));
+			}
+			nono.stickTo(canholder, ctx);
 			var context = ctx.getContext('2d');
 
 			var data = {
