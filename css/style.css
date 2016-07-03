@@ -343,11 +343,12 @@ button i.fa{
 ******** Canvas section rules ***********
 ****************************************/
 
-.canvas-holder{
-	width: 500px;
-	margin: 3.5% 0 0 1%;
-	background-color: #FFF;
+body div#analyse #canvas-holder{
 	display: inline-block;
+	width: 500px;
+	//margin: 3.5% 0 0 1%;
+	background-color: #FFF;
+	
 }
 
 /****************************************
@@ -472,6 +473,6 @@ body table tbody tr td:hover{
 body div#analyse{
 	display: inline-block;
 	position: relative;
-	margin: 1%;
+	margin: 3.5% 0 0 1%;
 	min-width: 500px;
 }
