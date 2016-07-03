@@ -407,8 +407,6 @@ div.parts-container:last-child{
 ****************************************/
 
 body div#analyse table{
-	position : absolute;
-	top: 200px;
 	table-layout: fixed;
 	border-collapse: collapse;
 	max-width: 480px;
