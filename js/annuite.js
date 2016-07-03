@@ -18,7 +18,8 @@ var Pret = (function(){
 				period : 'Durée',
 				payment : 'Paiement',
 				dette: 'Dette Totale',
-				interet: 'Interêts Totaux'
+				interet: 'Interêts Totaux',
+				freq: 'frequence'
 			}];
 		var echelon = [];
 		var dataP = [];
@@ -139,8 +140,8 @@ var Pret = (function(){
 					'Intérêt Cumulé': arrondi(intCum, 2)
 				};
 				etiqs.push('paiement '+No);
-				intsPaye.push(arrondi(intCum, 2));
-				prinsPaye.push(arrondi(bFin, 2));
+				intsPaye.push(arrondi(intP, 2));
+				prinsPaye.push(arrondi(prinP, 2));
 				echelon.push(obj);
 			}
 			dataP.push(etiqs, intsPaye, prinsPaye);
@@ -299,7 +300,8 @@ var Pret = (function(){
 				period : duree.value+' ans',
 				payment : paiement,
 				dette: calc_dette,
-				interet: calc_int
+				interet: calc_int,
+				freq: frequence
 			};
 
 			if(_temp.amount !== '' && _temp.tx !== '' && _temp.period !== '' && _temp.payment !== '' && _temp.dette !== 0 && _temp.interet !== 0){
@@ -372,8 +374,8 @@ function render_liste(obj, indx, container){
 		listes.appendChild(liste[i]);
 	};
 
-	if(document.getElementById('analyse').hasChildNodes()){
-		document.getElementById('analyse').replaceChild(container, document.getElementById('analyse').firstChild);
+	if(document.getElementById('comparaison').hasChildNodes()){
+		document.getElementById('comparaison').replaceChild(container, document.getElementById('comparaison').firstChild);
 	}
-	document.getElementById('analyse').appendChild(container).appendChild(sous_conteneur).appendChild(listes);	
+	document.getElementById('comparaison').appendChild(container).appendChild(sous_conteneur).appendChild(listes);	
 }
