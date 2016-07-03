@@ -248,11 +248,12 @@ var Pret = (function(){
 
 				nono.stickTo(tableau, entete);
 				nono.stickTo(tableau, corps);
-				
-				if(document.getElementById('analyse').hasChildNodes()){
-					document.getElementById('analyse').replaceChild(tableau, document.getElementById('analyse').firstChild);
+				if(document.getElementsByTagName('table')[0] !== undefined){
+					document.getElementById('analyse').replaceChild(tableau, document.getElementsByTagName('table')[0]);
+				}else{
+					document.getElementById('analyse').appendChild(tableau);
 				}
-				document.getElementById('analyse').appendChild(tableau);
+				
 			}
 		}
 
