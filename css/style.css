@@ -374,12 +374,12 @@ body div#analyse #canvas-holder div#capholder caption{
 	color: #727272;
 }
 
-
 body div#analyse #canvas-holder div#capholder caption span{
 	float: right;
 	margin-right: 1%;
 	cursor: pointer;
 }
+
 /****************************************
 ****** Compares section rules ***********
 ****************************************/
@@ -399,7 +399,7 @@ aside.container p{
 
 div.parts-container{
 	display: inline-block;
-	//width: 33%;
+	width: 33%;
 	color: #7D7D7D;
 	//border: 1px solid red;
 	text-align: right;
