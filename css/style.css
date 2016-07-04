@@ -133,6 +133,10 @@ aside#menu ul{
 ************ containers rules ***********
 ****************************************/
 
+body div#second-contain{
+	max-width: 312px;
+}
+
 body div.container{
 	display: inline-block;
 	vertical-align: top;
@@ -320,7 +324,7 @@ button{
 }
 
 button:first-child{
-	margin-bottom: 170%;
+	margin-bottom: 200%;
 }
 
 button:hover i.fa{
