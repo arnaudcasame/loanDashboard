@@ -99,18 +99,21 @@
 		<div class="container" id='second-contain'>
 			<div id='form_container'>
 				<form action="#" method='#' id='formul'>
-					<label class='monnaie'>
-						<input type='radio' name='monnaie' checked="true" value='HTG' class='devise'>
-						HTG
-					</label>
-					<label class='monnaie'>
-						<input type='radio' name='monnaie' value='USD' class='devise'>
-						USD
-					</label>
-					<label class='monnaie'>
-						<input type='radio' name='monnaie' value='EUR' class='devise'>
-						EUR
-					</label>
+					<div id='monnaie-container'>
+						<label class='monnaie'>
+							<input type='radio' name='monnaie' checked="true" value='HTG' class='devise'>
+							HTG
+						</label>
+						<label class='monnaie'>
+							<input type='radio' name='monnaie' value='USD' class='devise'>
+							USD
+						</label>
+						<label class='monnaie'>
+							<input type='radio' name='monnaie' value='EUR' class='devise'>
+							EUR
+						</label>
+					</div>
+
 					<div>
 						<label class='label-text'>Principal</label>
 						<input type="text" name='principal'  class="champ" id='montant'>
@@ -142,11 +145,11 @@
 				</p>
 				<div id='bouton_container'>
 					<button id='save' title="Comparer les modalités d'un prêt à un autre.">
-						<span>Comparer</span>
-						<i class="fa fa-chevron-right"></i>
+						<span><i class="fa fa-exchange"></i></span>
 					</button>
-					<button id='eche' title="Déployer l'échelonnement des modalités actuelles."><span>Echéancier</span>
-						<i class="fa fa-chevron-right"></i>
+					<button id='eche' title="Déployer l'échelonnement des modalités actuelles."><span><i class="fa fa-table"></i></span>
+					</button>
+					<button id='graph' title="Visionner le graph Intérêt et Principal"><span><i class="fa fa-line-chart"></i></span>
 					</button>
 				</div>
 			</div>
