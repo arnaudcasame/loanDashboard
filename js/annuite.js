@@ -45,7 +45,9 @@ var Pret = (function(){
 		var resultat = document.getElementById('resultat');	
 		var cours = document.getElementById('monnaie');
 		var bouton_save = document.getElementById('save');
-		var  bouton_echeancier = document.getElementById('eche');
+		var  bouton_echeancier = document.getElementById('eche'),
+		exit = document.getElementById('exit-graph'),
+		graph = document.getElementById('graph');
 		
 	
 
@@ -101,6 +103,13 @@ var Pret = (function(){
 			echeancier();
 		};
 
+		graph.onclick = function(){
+			if(paiement !== ''){
+				renderPlot(dataP);
+			}
+		};
+
+		
 		//defining functions
 		function render(){
 			resultat.textContent = paiement;
@@ -139,6 +148,7 @@ var Pret = (function(){
 					'Balance Fin': arrondi(bFin, 2),
 					'Intérêt Cumulé': arrondi(intCum, 2)
 				};
+				
 				etiqs.push('paiement '+No);
 				intsPaye.push(arrondi(intP, 2));
 				prinsPaye.push(arrondi(prinP, 2));
@@ -149,14 +159,38 @@ var Pret = (function(){
 
 		function renderPlot(donnees){
 			var canholder = document.getElementById('canvas-holder');
+			var capholder = nono.create('div');
+			capholder.id = 'capholder';
+			var caption = nono.create('caption');
+			var exit = nono.create('span');
+			exit.id = 'exit-graph';
+			var icon = nono.create('i');
+			icon.className = 'fa fa-times';
+			nono.stickTo(exit, icon);
+			nono.display(caption, 'Graphe de comparaison des paiements').stickTo(capholder, caption);
+
+			exit.onclick = function(){
+				document.getElementById('canvas-holder').removeChild(document.getElementById('capholder'));
+				document.getElementById('canvas-holder').removeChild(document.getElementById('myChart'));
+			};
+
+
+
 			var ctx = nono.create('canvas');
 			ctx.id = 'myChart';
 			ctx.style.width = 250 + 'px';
 			ctx.style.height = 125 + 'px';
-			if(canholder.hasChildNodes()){
+
+			if(canholder.hasChildNodes() && document.getElementById('capholder')){
+				canholder.removeChild(document.getElementById('capholder'));
 				canholder.removeChild(document.getElementById('myChart'));
 			}
+			nono.stickTo(caption, exit);
+			nono.stickTo(canholder, capholder);
 			nono.stickTo(canholder, ctx);
+
+
+
 			var context = ctx.getContext('2d');
 
 			var data = {

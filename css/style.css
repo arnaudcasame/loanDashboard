@@ -362,17 +362,29 @@ body div.container div#form_container button span i.fa{
 body div#analyse #canvas-holder{
 	display: inline-block;
 	width: 500px;
-	//margin: 3.5% 0 0 1%;
 	background-color: #FFF;
-	
+	border: 1px solid #727272;
 }
 
+body div#analyse #canvas-holder div#capholder caption{
+	display: block;
+	width: 100%;
+	background-color: #D7D7D7;
+	border-bottom: 1px solid #727272;
+	color: #727272;
+}
+
+
+body div#analyse #canvas-holder div#capholder caption span{
+	float: right;
+	margin-right: 1%;
+	cursor: pointer;
+}
 /****************************************
 ****** Compares section rules ***********
 ****************************************/
-body div#analyse aside.container{
-	//padding: 0 0 1% 0;
-	//
+body div.container div#comparaison aside.container{
+	border: 1px solid #727272;
 }
 
 aside.container p{
@@ -423,6 +435,7 @@ div.parts-container:last-child{
 ****************************************/
 
 body div#analyse table{
+	margin-top: 1%;
 	table-layout: fixed;
 	border-collapse: collapse;
 	max-width: 480px;

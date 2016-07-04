@@ -1,6 +1,6 @@
 var nono = (function(){
 
-	var tags = /\b(?:div|aside|section|article|span|a|ul|li|ol|header|footer|h1|h2|h3|h4|h5|h6|img|p|button|input|select|label|table|thead|tbody|th|td|tr|body|caption|canvas)\b/;
+	var tags = /\b(?:div|aside|section|article|span|a|ul|li|ol|header|footer|h1|h2|h3|h4|h5|h6|img|p|button|input|select|label|table|thead|tbody|th|td|tr|body|caption|canvas|i)\b/;
 	var attributes = /\b(?:color|background-color|font-size|text-decoration|border|font-style|width)\b/;
 	var embeds = /\b(?:src|id|class|href)\b/;
 	var recup = null;
