@@ -113,26 +113,6 @@ body div.container div.unit_contain div.infos div.taux p{
 }
 
 /****************************************
-********** Left side Menu rules *********
-****************************************/
-
-aside#menu{
-	width: 100px;
-	margin: 1%;
-	vertical-align: top;
-	display: inline-block;
-	background-color: #FFF;
-	border: 1px solid #7D7D7D;
-	//box-shadow: 0 0 15px 3px rgba(0,0,0, 0.5);
-	//transition: box-shadow 0.3s;
-}
-
-aside#menu ul{
-	list-style: none;
-	padding: 2%;
-}
-
-/****************************************
 ************ containers rules ***********
 ****************************************/
 
@@ -145,7 +125,7 @@ body div.container{
 	vertical-align: top;
 	max-width: 380px;
 	width: 100%;
-	margin: 3.5% 0 0 1%;
+	margin: 4% 0 0 1%;
 	//border: 1px solid #7D7D7D;
 	//background-color: #fff;
 	//box-shadow: 0 0 15px 3px rgba(0,0,0, 0.5);
@@ -203,22 +183,6 @@ body div.container div.unit_contain div.infos{
 
 .container:hover{
 	//box-shadow: 0 0 10px 3px rgba(0,0,0, 0.3);
-}
-
-@media (max-width: 480px) {
-	.container{
-		max-width: 320px;
-		margin: 2% auto;
-	}
-
-	#form_container{
-		width: 92%;
-		margin: 0;
-	}
-
-	body div#container form{
-		width: 370px;
-	}
 }
 
 @media screen and (min-width: 480px){
@@ -314,15 +278,15 @@ body div.container form div label.monnaie{
 #bouton_container{
 	position: absolute;
 	top: 10%;
-	left: 270px;
+	left: 80%;
 	//border: 1px solid #727272;
 }
 
-body div.container div#form_container button{
+body div.container div#form_container div#bouton_container button{
 	display: block;
 	margin-bottom: 20px;
 	width: 45px;
-	padding: 3%;
+	padding: 4%;
 	background-color: #727272;
 	border-radius: 5px;
 	outline: none;
@@ -332,25 +296,17 @@ body div.container div#form_container button{
 	transition: background-color 0.4s linear;
 }
 
-body div.container div#form_container button:first-child{
-	//margin-bottom: 200%;
-}
-
-body div.container div#form_container button:hover{
+body div.container div#form_container div#bouton_container button:hover{
 	background-color: #FFF;
 }
 
-body div.container div#form_container button:hover span i.fa{
+body div.container div#form_container div#bouton_container button:hover span i.fa{
 	color: #727272;
-	font-size: 3em;
+	font-size: 2em;
 }
 
-body div.container div#form_container button span i.fa:first-child{
-	font-size: 2.6em;
-}
-
-body div.container div#form_container button span i.fa{
-	font-size: 3em;
+body div.container div#form_container div#bouton_container button span i.fa{
+	font-size: 2em;
 	color: #FFF;
 	transition: color 0.4s linear;
 }
@@ -495,13 +451,59 @@ body table tbody tr td:hover{
 		padding: 0;
 		font-size: 0.8em;
 	}
+
+	body div.container{
+		display: block;
+		width: 90%;
+		margin: auto;
+	}
+
+	body div.container div.unit_contain div.infos{
+		float: right;
+	}
+
+	body div.container div.unit_contain div.infos div.taux{
+		font-size: 0.8em;
+	}
+
+	body div.container div.unit_contain div.infos p{
+		display: inline;
+		font-size: 0.8em;
+	}
+
+	body div.container div.unit_contain div#quote span{
+		font-size: 0.9em;
+		float: right;
+	}
+
+	body div#first-contain{
+		margin-top: 60px;
+	}
+
+	body div#second-contain{
+		width: 90%;
+		margin: auto;
+	}
+
+	body div#analyse{
+		display: block;
+		width: 98%;
+		margin: auto;
+		padding: 0;
+	}
+
+	body div#analyse #canvas-holder{
+		width: 100%;
+		margin: auto;
+	}
+
 }
 
 body div#analyse{
 	display: inline-block;
 	position: relative;
-	margin: 3.5% 0 0 1%;
-	min-width: 500px;
+	margin: 4% 0 0 1%;
+	//min-width: 500px;
 }
 
 body div.container div#comparaison{
