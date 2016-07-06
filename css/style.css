@@ -61,7 +61,7 @@ body header#head div#search_contain input#searchin{
 
 body header#head div#search_contain button#search{
 	position: absolute;
-	left: 300%;
+	left: 380px;
 	top: 5px;
 	background-color: transparent;
 	border-style: none;
@@ -106,6 +106,7 @@ body div.container div.unit_contain div.infos div.taux:hover{
 }
 
 body div.container div.unit_contain div.infos div.taux p{
+	display: block;
 	margin: 0;
 	padding: 0;
 	font-size: 1.1em;
@@ -439,11 +440,19 @@ body table tbody tr td:hover{
 }
 
 @media (max-width: 480px) {
+
+	body header#head div#search_contain{
+		width: 95%;
+	}
 	
 	body header#head div#search_contain input#searchin{
-		//width: 300px;
-		//margin: auto;
-		//text-align: center;
+		display: block;
+		width: 90%;
+		margin: auto;
+	}
+
+	body header#head div#search_contain button#search{
+		left: 85%;
 	}
 
 
@@ -470,7 +479,7 @@ body table tbody tr td:hover{
 		float: right;
 	}
 
-	body div.container div.unit_contain div.infos div.taux{
+	body div.container div.unit_contain div.infos div.taux p{
 		font-size: 0.8em;
 	}
 
