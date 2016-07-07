@@ -30,7 +30,6 @@ var Pret = (function(){
 		var monnaie = null;
 		var frequence = 12;
 		var paiement = '';
-		var formul = null;
 		var calculated = false;
 		var paiement_in_num = 0;
 
@@ -41,7 +40,6 @@ var Pret = (function(){
 		duree = document.getElementById('duree');
 		var freq = document.getElementsByClassName('freq');
 		monnaie = document.getElementsByClassName('devise');
-		formul = document.getElementById('formul');
 		var resultat = document.getElementById('resultat');	
 		var cours = document.getElementById('monnaie');
 		var bouton_save = document.getElementById('save');
@@ -52,10 +50,6 @@ var Pret = (function(){
 	
 
 		//binding Events
-		formul.onchange = function(){
-			calculPaiement();
-		};
-
 		montant.onkeyup = function(){
 			calculPaiement();
 		};
