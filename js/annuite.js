@@ -381,11 +381,11 @@ function render_liste(obj, indx, container){
 	sous_conteneur.className = 'parts-container';
 
 	var listes = document.createElement('ul');
-	var liste = []
+	var liste = [];
 
 	for(var i in obj){
 		var ele_liste = document.createElement('li');
-		var span = document.createElement('span')
+		var span = document.createElement('span');
 		span.className = (indx === 0) ? '' : 'valeurs';
 		if(i === 'payment' || (typeof obj[i] === 'string')){
 			span.textContent = obj[i];
@@ -398,9 +398,9 @@ function render_liste(obj, indx, container){
 		liste.push(ele_liste);
 	}
 
-	for(var i=0; i<liste.length; i++) {
+	for(var i = 0; i<liste.length; i++) {
 		listes.appendChild(liste[i]);
-	};
+	}
 
 	if(document.getElementById('comparaison').hasChildNodes()){
 		document.getElementById('comparaison').replaceChild(container, document.getElementById('comparaison').firstChild);
