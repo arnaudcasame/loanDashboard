@@ -12,15 +12,7 @@
 var Pret = (function(){
 		
 		// Initialization
-		var listPret = [{ 
-				amount: 'Principal',
-				tx : 'Taux',
-				period : 'Durée',
-				payment : 'Paiement',
-				dette: 'Dette Totale',
-				interet: 'Interêts Totaux',
-				freq: 'frequence'
-			}];
+		var listPret = [];
 		var echelon = [];
 		var dataP = [];
 		var montant = 0;
@@ -93,8 +85,8 @@ var Pret = (function(){
 			savePret();
 		};
 
-		bouton_echeancier.onclick = function(){	
-			echeancier();
+		bouton_echeancier.onclick = function(){
+			renderTab.tabVer(echelon, 'analyse');
 		};
 
 		graph.onclick = function(){
@@ -242,50 +234,6 @@ var Pret = (function(){
 			});
 		}
 
-		function echeancier(){
-			if(paiement_in_num !== 0){
-				var tableau = nono.create('table');
-				var desc = nono.create('caption');
-				nono.stickTo(tableau, desc).display('Echéancier');
-				var entete = nono.create('thead');
-				var corps = nono.create('tbody');
-
-				for (var i = 0; i < echelon.length; i++) {
-					var range = nono.create('tr');
-					if(i === 0){
-						var ligne = nono.create('tr');
-					}
-					
-					for(var chiffre in echelon[i]){
-						if(i === 0){
-							var celth = nono.create('th');
-							nono.stickTo(ligne, celth).display(chiffre);
-							nono.stickTo(entete, ligne);
-						}
-						var celtd = nono.create('td');
-						if(chiffre === 'No'){
-							nono.stickTo(range, celtd)
-						.display(echelon[i][chiffre]);
-						}else{
-							nono.stickTo(range, celtd)
-						.display(conversion_nombre(echelon[i][chiffre], ' '));
-						}	
-					}
-					
-					nono.stickTo(corps, range);
-				}
-
-				nono.stickTo(tableau, entete);
-				nono.stickTo(tableau, corps);
-				if(document.getElementsByTagName('table')[0] !== undefined){
-					document.getElementById('analyse').replaceChild(tableau, document.getElementsByTagName('table')[0]);
-				}else{
-					document.getElementById('analyse').appendChild(tableau);
-				}
-				
-			}
-		}
-
 		function calculPaiement(){
 			paiement = (montant.value*((taux.value/100)/frequence))/(1 - Math.pow(1 + ((taux.value/100)/frequence), - (duree.value*frequence)));
 			
@@ -324,89 +272,24 @@ var Pret = (function(){
 			var calc_dette = paiement_in_num * frequence * duree.value;
 
 			var _temp = {
-				amount : montant.value * 1,
-				tx : taux.value+' %',
-				period : duree.value+' ans',
-				payment : paiement,
-				dette: calc_dette,
-				interet: calc_int,
-				freq: frequence
+				"Principal" : montant.value * 1,
+				"Taux" : taux.value+' %',
+				"Durée" : duree.value+' ans',
+				"Paiement" : paiement,
+				"Dette Totale": calc_dette,
+				"Interêts Totaux": calc_int,
+				"frequence": frequence
 			};
 
 			if(_temp.amount !== '' && _temp.tx !== '' && _temp.period !== '' && _temp.payment !== '' && _temp.dette !== 0 && _temp.interet !== 0){
-				if(listPret.length < 3){
+				if(listPret.length < 2){
 					listPret.push(_temp);
 				}else{
 					listPret.splice(1, 1);
 					listPret.push(_temp);
 				}
 			}
-			console.log(listPret);
-			render_comparison(listPret);
+			renderTab.tabHor(listPret, 'comparaison');
 		}
 		renderPlot([[], [], []]);
 })();
-
-
-function render_comparison(arg){
-
-	if(typeof arg === 'object' && arg.length === 2){
-		var conteneur = document.createElement('aside');
-		conteneur.className = 'container';
-		conteneur.id = 'there';
-		var captions = nono.create('p');
-		captions.textContent = 'Comparaison des deux Simulations';
-		conteneur.appendChild(captions);
-
-		for(var i=0; i<arg.length; i++){
-			render_liste(arg[i], i, conteneur);
-		}
-	}else if(typeof arg === 'object' && arg.length > 2){
-
-		var conteneur = document.createElement('aside');
-		conteneur.className = 'container';
-		conteneur.id = 'there';
-		var captions = document.createElement('p');
-		captions.textContent = 'Comparaison des Simulations';
-		conteneur.appendChild(captions);
-
-		for(var i=0; i<arg.length; i++){
-			render_liste(arg[i], i, conteneur);
-		}
-	}
-}
-
-
-function render_liste(obj, indx, container){
-	var sous_conteneur = document.createElement('div');
-	sous_conteneur.className = 'parts-container';
-
-	var listes = document.createElement('ul');
-	var liste = [];
-	
-	for(var i in obj){
-		
-		var ele_liste = document.createElement('li');
-		var span = document.createElement('span');
-
-		span.className = (indx === 0) ? '' : 'valeurs';
-		if(i === 'payment' || (typeof obj[i] === 'string')){
-			span.textContent = obj[i];
-		}else{
-			span.textContent = conversion_nombre(arrondi(obj[i], 2), ' ');
-		}
-		
-		
-		ele_liste.appendChild(span);
-		liste.push(ele_liste);
-	}
-
-	for(var i = 0; i<liste.length; i++) {
-		listes.appendChild(liste[i]);
-	}
-
-	if(document.getElementById('comparaison').hasChildNodes()){
-		document.getElementById('comparaison').replaceChild(container, document.getElementById('comparaison').firstChild);
-	}
-	document.getElementById('comparaison').appendChild(container).appendChild(sous_conteneur).appendChild(listes);	
-}
