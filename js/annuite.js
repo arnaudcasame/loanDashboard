@@ -304,6 +304,7 @@ var Pret = (function(){
 				paiement_in_num = paiement;
 				paiement = conversion_nombre(paiement, ' ');
 				renderPlot(dataP);
+
 				for(var i=0; i<3; i++){
 					if(monnaie[i].checked === true){
 						devise = monnaie[i].value;
@@ -340,7 +341,7 @@ var Pret = (function(){
 					listPret.push(_temp);
 				}
 			}
-			
+			console.log(listPret);
 			render_comparison(listPret);
 		}
 		renderPlot([[], [], []]);
@@ -382,10 +383,12 @@ function render_liste(obj, indx, container){
 
 	var listes = document.createElement('ul');
 	var liste = [];
-
+	
 	for(var i in obj){
+		
 		var ele_liste = document.createElement('li');
 		var span = document.createElement('span');
+
 		span.className = (indx === 0) ? '' : 'valeurs';
 		if(i === 'payment' || (typeof obj[i] === 'string')){
 			span.textContent = obj[i];
