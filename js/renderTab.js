@@ -63,7 +63,7 @@ renderTab = (function(){
 					ligne.appendChild(libelle);
 
 					var cel = document.createElement('td');
-					cel.textContent = data[i][y];
+					cel.textContent = (typeof data[i][y] === 'number') ? conversion_nombre(arrondi(data[i][y], 2), ' ') : data[i][y];
 
 					ligne.appendChild(cel);
 					tabLignes.push(ligne);
@@ -72,7 +72,7 @@ renderTab = (function(){
 						j=0;
 					}
 					var cel = document.createElement('td');
-					cel.textContent = data[i][y];
+					cel.textContent = (typeof data[i][y] === 'number') ? conversion_nombre(arrondi(data[i][y], 2), ' ') : data[i][y];
 					tabLignes[j].appendChild(cel);
 				}
 				j++;
@@ -86,13 +86,12 @@ renderTab = (function(){
 			document.getElementById(aim).appendChild(tableau);
 		}
 	}
-
 	return{
 		tabVer : tabVer,
 		tabHor : tabHor
 	};
-
 }());
+
 
 var list = [{
 	"Principal":171600,
