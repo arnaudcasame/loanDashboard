@@ -29,21 +29,18 @@ body header#head{
 }
 
 body header#head div#search_contain{
-	width: 31%;
-	text-align: right;
-	margin: 10px 10px 0 0;
+	margin: 8px 0 8px 5px;
+	display: inline-block;
 	position: relative;
 }
 
 body header#head div#search_contain input#searchin{
 	width: 400px;
-	//height: 30px;
 	background-color: rgba(207, 207, 207, 0.5);
 	border-style: none;
 	padding: 5px;
 	outline: none;
 	color: #FFF;
-	//font-weight: bold;
 	font-size: 1.1em;
 }
 
@@ -439,10 +436,11 @@ body table tbody tr td:hover{
 	        transform: scale(1.1, 1.1);
 }
 
-@media (max-width: 480px) {
+@media screen and (max-width: 480px) {
 
 	body header#head div#search_contain{
-		width: 95%;
+		width: 100%;
+		margin: 8px auto;
 	}
 	
 	body header#head div#search_contain input#searchin{
