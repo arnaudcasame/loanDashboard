@@ -281,15 +281,20 @@ var Pret = (function(){
 				"frequence": frequence
 			};
 
-			if(_temp.amount !== '' && _temp.tx !== '' && _temp.period !== '' && _temp.payment !== '' && _temp.dette !== 0 && _temp.interet !== 0){
+			if(_temp["Principal"] !== '' 
+				&& _temp["Taux"] !== '' 
+				&& _temp["Durée"] !== '' 
+				&& _temp["Paiement"] !== '' 
+				&& _temp["Dette Totale"] !== 0 
+				&& _temp["Interêts Totaux"] !== 0){
 				if(listPret.length < 2){
 					listPret.push(_temp);
 				}else{
 					listPret.splice(1, 1);
 					listPret.push(_temp);
 				}
+				renderTab.tabHor(listPret, 'comparaison');
 			}
-			renderTab.tabHor(listPret, 'comparaison');
 		}
 		renderPlot([[], [], []]);
 })();
