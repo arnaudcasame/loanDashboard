@@ -337,51 +337,47 @@ body div#analyse #canvas-holder div#capholder caption span{
 /****************************************
 ****** Compares section rules ***********
 ****************************************/
-body div.container div#comparaison aside.container{
-	border: 1px solid #727272;
+body div.container div#comparaison table#horizontal{
+	display: table;
+	width: 100%;
 }
 
-aside.container p{
-	text-align: center;
+body div.container div#comparaison table#horizontal caption{
+	display: table-caption;
+	color: #7D7D7D;
 	background-color: #D7D7D7;
 	margin: 0;
 	padding: 5px;
 	font-size: 1em;
+	border-bottom: 1px solid #7D7D7D;
+	text-align: center;
+}
+
+body div.container div#comparaison table#horizontal tr{
+	width: 100%;
 	color: #7D7D7D;
 	border-bottom: 1px solid #7D7D7D;
-}
-
-div.parts-container{
-	display: inline-block;
-	width: 33%;
-	color: #7D7D7D;
-	//border: 1px solid red;
-	text-align: right;
-}
-
-div.parts-container:last-child{
-	background-color: #D7D7D7;
-}
-
-.parts-container ul{
-	list-style: none;
-	padding-left: 0;
-	margin: 0 5px;
-}
-
-.parts-container ul li:last-child{
-	border: none;
-}
-
-.parts-container ul li{
-	width: 94px;
-	border-bottom: 1px solid #7D7D7D;
-	padding: 0 1%;
 	font-size: 0.9em;
+	display: table-row;
 }
 
-.parts-container ul li span.valeurs{
-	font-weight: bold;
+body div.container div#comparaison table#horizontal tr:last-child{
+	border-style: none;
+}
+
+body div.container div#comparaison table#horizontal tr th{
+	text-align: left;
+	display: table-cell;
+	padding: .5% 0 .5% 1%;
+}
+
+body div.container div#comparaison table#horizontal tr td{
+	display: table-cell;
+	padding: .5% 0 .5% 1%;
+}
+
+body div.container div#comparaison table#horizontal tr > td:last-child{
+	background-color: #D7D7D7;
 }
 
 /****************************************
