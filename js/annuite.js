@@ -276,9 +276,9 @@ var Pret = (function(){
 				"Taux" : taux.value+' %',
 				"Durée" : duree.value+' ans',
 				"Paiement" : paiement,
-				"Dette Totale": calc_dette,
+				"frequence": frequence,
 				"Interêts Totaux": calc_int,
-				"frequence": frequence
+				"Dette Totale": calc_dette
 			};
 
 			if(_temp["Principal"] !== '' 
