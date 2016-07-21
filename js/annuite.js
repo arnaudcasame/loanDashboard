@@ -118,7 +118,8 @@ var Pret = (function(){
 			echelon = [];
 			var etiqs = [], intsPaye = [], prinsPaye = []; 
 			dataP = [];
-			for(var i=0; i < frequence*duree; i++){
+			var len = frequence*duree;
+			for(var i=0; i < len; i++){
 
 				var No = i+1, bDep = (No===1) ? principal : bFin, 
 				intP = bDep * ((taux/100)/frequence), 
@@ -126,7 +127,7 @@ var Pret = (function(){
 				bFin = bDep - prinP, 
 				intCum = (No===1) ? intP : (intP + intCum);
 
-				var obj = {
+				var mois = {
 					'No': No,
 					'Balance Départ':  arrondi(bDep, 2),
 					'Intéret Payé': arrondi(intP, 2),
@@ -138,7 +139,7 @@ var Pret = (function(){
 				etiqs.push('paiement '+No);
 				intsPaye.push(arrondi(intP, 2));
 				prinsPaye.push(arrondi(prinP, 2));
-				echelon.push(obj);
+				echelon.push(mois);
 			}
 			dataP.push(etiqs, intsPaye, prinsPaye);
 		}
@@ -252,7 +253,6 @@ var Pret = (function(){
 				paiement_in_num = paiement;
 				paiement = conversion_nombre(paiement, ' ');
 				renderPlot(dataP);
-
 				for(var i=0; i<3; i++){
 					if(monnaie[i].checked === true){
 						devise = monnaie[i].value;
@@ -287,14 +287,16 @@ var Pret = (function(){
 				&& _temp["Paiement"] !== '' 
 				&& _temp["Dette Totale"] !== 0 
 				&& _temp["Interêts Totaux"] !== 0){
+
 				if(listPret.length < 2){
 					listPret.push(_temp);
 				}else{
-					listPret.splice(1, 1);
+					listPret.shift();
 					listPret.push(_temp);
 				}
+
 				renderTab.tabHor(listPret, 'comparaison');
 			}
 		}
-		renderPlot([[], [], []]);
+		//renderPlot([[], [], []]);
 })();
