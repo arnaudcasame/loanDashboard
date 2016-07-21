@@ -317,7 +317,7 @@ body div#analyse #canvas-holder{
 	display: inline-block;
 	width: 500px;
 	background-color: #FFF;
-	border: 1px solid #727272;
+	//border: 1px solid #727272;
 }
 
 body div#analyse #canvas-holder div#capholder caption{
