@@ -1,0 +1,172 @@
+/*****************************************
+* Media Queries rules for responsiveness *
+*****************************************/
+@media screen and (max-width: 480px) {
+
+	body header#head div#search_contain{
+		width: 100%;
+		margin: 8px auto;
+	}
+	
+	body header#head div#search_contain input#searchin{
+		display: block;
+		width: 90%;
+		margin: auto;
+	}
+
+	body header#head div#search_contain button#search{
+		left: 85%;
+	}
+
+
+	body div#analyse table{
+		top: 0;
+	}
+
+	body table thead tr th{
+		font-size: 0.8em;
+	}
+
+	body table tbody tr td{
+		padding: 0;
+		font-size: 0.8em;
+	}
+
+	body div.container{
+		display: block;
+		width: 90%;
+		margin: auto;
+	}
+
+	body div.container div.unit_contain div.infos{
+		float: right;
+	}
+
+	body div.container div.unit_contain div.infos div.taux p{
+		font-size: 0.8em;
+	}
+
+	body div.container div.unit_contain div.infos p{
+		display: inline;
+		font-size: 0.8em;
+	}
+
+	body div.container div.unit_contain div#quote span{
+		font-size: 0.9em;
+		float: right;
+	}
+
+	body div#first-contain{
+		margin-top: 60px;
+	}
+
+	body div#second-contain{
+		width: 90%;
+		margin: auto;
+	}
+
+	body div#analyse{
+		display: block;
+		width: 98%;
+		margin: auto;
+		padding: 0;
+	}
+
+	body div#analyse #canvas-holder{
+		width: 100%;
+		margin: auto;
+	}
+
+}
+
+
+@media (min-width: 480px) and (max-width: 750px) {
+
+	body div#analyse table{
+		top: 0;
+		margin: auto;
+	}
+
+	body table thead tr th{
+		font-size: 1em;
+	}
+
+	body table tbody tr td{
+		padding: 0;
+		font-size: 1em;
+	}
+
+	body div.container{
+		display: block;
+		width: 90%;
+		margin: auto;
+	}
+
+	body div.container div.unit_contain div.infos{
+		float: right;
+	}
+
+	body div.container div.unit_contain div.infos div.taux{
+		font-size: 0.8em;
+	}
+
+	body div.container div.unit_contain div.infos p{
+		display: inline;
+		font-size: 0.8em;
+	}
+
+	body div.container div.unit_contain div#quote span{
+		font-size: 0.9em;
+		float: right;
+	}
+
+	body div#first-contain{
+		margin-top: 60px;
+	}
+
+	body div#second-contain{
+		width: 90%;
+		margin: auto;
+	}
+
+	body div#analyse{
+		display: block;
+		width: 98%;
+		margin: auto;
+		padding: 0;
+	}
+
+	body div#analyse #canvas-holder{
+		width: 100%;
+		margin: auto;
+	}
+
+}
+
+@media (min-width: 750px){
+
+	body div#analyse table{
+		top: 0;
+	}
+
+	body table thead tr th{
+		font-size: 1em;
+	}
+
+	body table tbody tr td{
+		padding: 0;
+		font-size: 1em;
+	}
+
+	body div.container{
+		width: 90%;
+		margin-top: 60px;
+	}
+
+	body div#analyse{
+		width: 37%;
+		margin-top: 60px;
+		padding: 0;
+	}
+
+}
