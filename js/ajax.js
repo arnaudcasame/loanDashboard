@@ -1,5 +1,4 @@
 var quotesJsonFileUrl = 'js/quotes.json';
-var activeQuote;
 var authorPlace = document.getElementById('author');
 var quotePlace = document.getElementById('quote');
 
@@ -25,7 +24,6 @@ function request(fileUrl){
 
 
 request(quotesJsonFileUrl);
-//request(gradientsJsonFileUrl);
 
 function treatQuotes(data){
 	var len = data.length;
@@ -33,8 +31,8 @@ function treatQuotes(data){
 		var tirage = Math.floor(Math.random() * ((len-1) - 0 + 1) + 0);
 		authorPlace.textContent = '- '+ data[tirage].author;
 		authorPlace.innerText = '- '+ data[tirage].author;
-		quotePlace.innerText = data[tirage].quote;
-		quotePlace.textContent = data[tirage].quote;
+		quotePlace.innerText = '"'+data[tirage].quote+'"';
+		quotePlace.textContent = '"'+data[tirage].quote+'"';
 	}
 	setInterval(repeat, 10000);
 	repeat();
