@@ -110,6 +110,10 @@ body div.container div.unit_contain div.infos div.taux p{
 	font-weight: bold;
 }
 
+body div.container div.unit_contain div#quotes{
+	overflow: hidden;
+}
+
 /****************************************
 ************ containers rules ***********
 ****************************************/
