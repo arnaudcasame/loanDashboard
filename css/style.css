@@ -315,23 +315,10 @@ body div.container div#form_container div#bouton_container button span i.fa{
 
 body div#analyse #canvas-holder{
 	display: inline-block;
-	width: 500px;
+	width: 490px;
 	background-color: #FFF;
 	//border: 1px solid #727272;
-}
-
-body div#analyse #canvas-holder div#capholder caption{
-	display: block;
-	width: 100%;
-	background-color: #D7D7D7;
-	border-bottom: 1px solid #727272;
-	color: #727272;
-}
-
-body div#analyse #canvas-holder div#capholder caption span{
-	float: right;
-	margin-right: 1%;
-	cursor: pointer;
+	margin-right: 10px;
 }
 
 /****************************************
@@ -385,7 +372,7 @@ body div.container div#comparaison table#horizontal tr > td:last-child{
 ****************************************/
 
 body div#analyse table{
-	margin-top: 1%;
+	margin: 1% auto;
 	table-layout: fixed;
 	border-collapse: collapse;
 	max-width: 480px;
@@ -432,6 +419,9 @@ body table tbody tr td:hover{
 	        transform: scale(1.1, 1.1);
 }
 
+/*****************************************
+* Media Queries rules for responsiveness *
+*****************************************/
 @media screen and (max-width: 480px) {
 
 	body header#head div#search_contain{
@@ -602,11 +592,71 @@ body table tbody tr td:hover{
 
 }
 
+/***************************************
+****** Analyse container rules *********
+***************************************/
+
 body div#analyse{
 	display: inline-block;
 	position: relative;
 	margin-top: 60px;
 	margin-left: 1%;
+	background-color: #FFF;
+}
+
+body div#analyse section{
+	display: block;
+	width: 100%;
+	height: 30px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+body div#analyse section:last-child{
+	border-top: 1px solid #7D7D7D;
+
+}
+
+body div#analyse section h2{
+	font-size: 1em;
+	font-weight: bold;
+	width: 100%;
+	line-height: 2em;
+	padding: 0;
+	margin: 0;
+	text-align: center;
+	background-color: #D7D7D7;
+	color: #7D7D7D;
+}
+
+body div#analyse section h2 a{
+	display: block;
+	width: 100%;
+	line-height: 2em;
+	text-decoration: none;
+	color: inherit;
+	outline: 0 none;
+}
+
+
+
+div#analyse section,
+div#analyse section h2
+{
+	-webkit-transition: all 1s ease;
+	transition: all 1s ease;
+}
+
+div#analyse section:target{
+	height: 30em;
+	background-color: #fff;
+	overflow-y: scroll;
+}
+
+div#analyse section:target h2
+{
+	font-size: 1.1em;
+	color: #6A6A6A;
 }
 
 body div.container div#comparaison{
