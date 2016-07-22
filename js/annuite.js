@@ -34,8 +34,7 @@ var Pret = (function(){
 		monnaie = document.getElementsByClassName('devise');
 		var resultat = document.getElementById('resultat');	
 		var cours = document.getElementById('monnaie');
-		var bouton_save = document.getElementById('save');
-		var  bouton_echeancier = document.getElementById('eche'),
+		var bouton_save = document.getElementById('save'),
 		tablo = document.getElementById('tablo'),
 		graph = document.getElementById('graph');
 		
@@ -83,12 +82,6 @@ var Pret = (function(){
 
 		bouton_save.onclick = function(){
 			savePret();
-		};
-
-		bouton_echeancier.onclick = function(){
-			if(dataP.length !== 0){
-				renderTab.tabVer(echelon, 'section2');
-			}
 		};
 
 		tablo.onclick = function(){
@@ -265,7 +258,7 @@ var Pret = (function(){
 				"Taux" : taux.value+' %',
 				"Durée" : duree.value+' ans',
 				"Paiement" : paiement,
-				"frequence": frequence,
+				"Fréquence": frequence,
 				"Interêts Totaux": calc_int,
 				"Dette Totale": calc_dette
 			};
