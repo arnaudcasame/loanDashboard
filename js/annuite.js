@@ -36,7 +36,7 @@ var Pret = (function(){
 		var cours = document.getElementById('monnaie');
 		var bouton_save = document.getElementById('save');
 		var  bouton_echeancier = document.getElementById('eche'),
-		exit = document.getElementById('exit-graph'),
+		tablo = document.getElementById('tablo'),
 		graph = document.getElementById('graph');
 		
 	
@@ -86,7 +86,15 @@ var Pret = (function(){
 		};
 
 		bouton_echeancier.onclick = function(){
-			renderTab.tabVer(echelon, 'analyse');
+			if(dataP.length !== 0){
+				renderTab.tabVer(echelon, 'section2');
+			}
+		};
+
+		tablo.onclick = function(){
+			if(dataP.length !== 0){
+				renderTab.tabVer(echelon, 'section2');
+			}
 		};
 
 		graph.onclick = function(){
@@ -146,34 +154,15 @@ var Pret = (function(){
 
 		function renderPlot(donnees){
 			var canholder = document.getElementById('canvas-holder');
-			var capholder = nono.create('div');
-			capholder.id = 'capholder';
-			var caption = nono.create('caption');
-			var exit = nono.create('span');
-			exit.id = 'exit-graph';
-			var icon = nono.create('i');
-			icon.className = 'fa fa-times';
-			nono.stickTo(exit, icon);
-			nono.display(caption, 'Graphe de comparaison des paiements').stickTo(capholder, caption);
-
-			exit.onclick = function(){
-				document.getElementById('canvas-holder').removeChild(document.getElementById('capholder'));
-				document.getElementById('canvas-holder').removeChild(document.getElementById('myChart'));
-			};
-
-
 
 			var ctx = nono.create('canvas');
 			ctx.id = 'myChart';
 			ctx.style.width = 250 + 'px';
 			ctx.style.height = 125 + 'px';
 
-			if(canholder.hasChildNodes() && document.getElementById('capholder')){
-				canholder.removeChild(document.getElementById('capholder'));
+			if(canholder.hasChildNodes()){
 				canholder.removeChild(document.getElementById('myChart'));
 			}
-			nono.stickTo(caption, exit);
-			nono.stickTo(canholder, capholder);
 			nono.stickTo(canholder, ctx);
 
 
@@ -298,5 +287,5 @@ var Pret = (function(){
 				renderTab.tabHor(listPret, 'comparaison');
 			}
 		}
-		//renderPlot([[], [], []]);
+		renderPlot([[], [], []]);
 })();
