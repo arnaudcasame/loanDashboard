@@ -638,7 +638,16 @@ body div#analyse section h2 a{
 	outline: 0 none;
 }
 
+body div#analyse section h2 a i{
+	font-size: .8em;
+	float: left;
+	line-height: 2.5em;
+	margin-left: 8px;
+}
 
+body div#analyse section:target h2 a i{
+	font-size: .9em;
+}
 
 div#analyse section,
 div#analyse section h2
