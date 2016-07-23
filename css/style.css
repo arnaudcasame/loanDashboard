@@ -179,6 +179,14 @@ body div.container div.unit_contain{
 	margin-bottom: 10px;
 }
 
+body div.container div.unit_contain:last-child{
+	height: 140px;
+}
+
+body div.container div.unit_contain:last-child div.logo{
+	height: 100%;
+}
+
 body div.container div.unit_contain div.infos p{
 	margin: 0;
 	font-size: 0.9em;
