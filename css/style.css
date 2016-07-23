@@ -111,8 +111,43 @@ body div.container div.unit_contain div.infos div.taux p{
 }
 
 body div.container div.unit_contain div#quotes{
+	position: absolute;
 	overflow: hidden;
+	cursor: pointer;
+	background-color: #FFF;
+	-webkit-transition: height .50s linear;
+	   -moz-transition: height .50s linear;
+	    -ms-transition: height .50s linear;
+	     -o-transition: height .50s linear;
+	        transition: height .50s linear;
 }
+
+body div.container div.unit_contain div#quotes:hover{
+	height: 200px;
+	z-index: 100;
+}
+
+body div.container div.unit_contain div#quotes p#quote{
+	padding: 0 2%;
+	display: block;
+}
+
+body div.container div.unit_contain div#quotes span#author{
+	display: block;
+	text-align: right;
+	margin-right: 5px;
+	font-style: italic;
+}
+
+.faded{
+	display: block;
+	-webkit-transition: display .25s linear;
+	   -moz-transition: display .25s linear;
+	    -ms-transition: display .25s linear;
+	     -o-transition: display .25s linear;
+	        transition: display .25s linear;
+}
+
 
 /****************************************
 ************ containers rules ***********
@@ -135,6 +170,7 @@ body div.container{
 }
 
 body div.container div.unit_contain{
+	position: relative;
 	width: 100%;
 	height: 90px;
 	background-color: #fff;
@@ -159,6 +195,7 @@ body div.container div.unit_contain div.infos h3{
 body div.container div.unit_contain div.logo,
 body div.container div.unit_contain div.infos{
 	display: inline-block;
+	float: left;
 	height: 90px;
 	margin: 0;
 }
@@ -178,8 +215,7 @@ body div.container div.unit_contain div.logo i.fa{
 }
 
 body div.container div.unit_contain div.infos{
-	width: 69.1%;
-	//background-color: rgba(125, 125, 125, 0.5);
+	width: 70%;
 	vertical-align: top;
 }
 
