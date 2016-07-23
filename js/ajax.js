@@ -1,6 +1,7 @@
 var quotesJsonFileUrl = 'js/quotes.json';
 var authorPlace = document.getElementById('author');
 var quotePlace = document.getElementById('quote');
+var quoteContain = document.getElementById('quotes');
 
 
 function request(fileUrl){
@@ -26,13 +27,30 @@ function request(fileUrl){
 request(quotesJsonFileUrl);
 
 function treatQuotes(data){
-	var len = data.length;
+	var len = data.length;	
 	function repeat(){
-		var tirage = Math.floor(Math.random() * ((len-1) - 0 + 1) + 0);
+		var tirage = Math.floor(Math.random() * ((len-1) - 0 + 1) + 0),
+		text = data[tirage]['quote'],
+		longChar = text.length;
+		
+		if(longChar > 50){
+			text = text.substr(0, 47)+'...';
+		}
+		
 		authorPlace.textContent = '- '+ data[tirage].author;
 		authorPlace.innerText = '- '+ data[tirage].author;
-		quotePlace.innerText = '"'+data[tirage].quote+'"';
-		quotePlace.textContent = '"'+data[tirage].quote+'"';
+		quotePlace.innerText = '"'+text+'"';
+		quotePlace.textContent = '"'+text+'"';
+		
+		quoteContain.onmouseover = function(){
+			quotePlace.innerText = '"'+data[tirage]['quote']+'"';
+			quotePlace.textContent = '"'+data[tirage]['quote']+'"';
+		}
+
+		quoteContain.onmouseout = function(){
+			quotePlace.innerText = '"'+text+'"';
+			quotePlace.textContent = '"'+text+'"';
+		}
 	}
 	setInterval(repeat, 10000);
 	repeat();
