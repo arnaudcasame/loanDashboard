@@ -148,6 +148,50 @@ body div.container div.unit_contain div#quotes span#author{
 	        transition: display .25s linear;
 }
 
+/****************************************
+************ calendar   rules ***********
+****************************************/
+body div.container div.unit_contain:last-child div.infos{
+	height: 100%;
+	overflow: hidden;
+}
+
+
+body div.container div.unit_contain div.infos table{
+	display: table;
+	width: 95%;
+	margin: auto;
+}
+
+body div.container div.unit_contain:last-child div.infos table caption{
+	display: table-caption;
+	color: #7D7D7D;
+}
+
+body div.container div.unit_contain div.infos table thead{
+	display: table-header-group;
+}
+
+body div.container div.unit_contain div.infos table tbody{
+	display: table-row-group;
+}
+
+body div.container div.unit_contain div.infos table thead tr{
+	display: table-row;
+}
+
+body div.container div.unit_contain div.infos table tbody tr{
+	display: table-row;
+}
+
+body div.container div.unit_contain div.infos table thead tr th{
+	display: table-cell;
+}
+body div.container div.unit_contain div.infos table tbody tr td{
+	display: table-cell;
+	text-align: center;
+}
+
 
 /****************************************
 ************ containers rules ***********
