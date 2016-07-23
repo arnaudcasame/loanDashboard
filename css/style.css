@@ -115,16 +115,17 @@ body div.container div.unit_contain div#quotes{
 	overflow: hidden;
 	cursor: pointer;
 	background-color: #FFF;
-	-webkit-transition: height .50s linear;
-	   -moz-transition: height .50s linear;
-	    -ms-transition: height .50s linear;
-	     -o-transition: height .50s linear;
-	        transition: height .50s linear;
+	-webkit-transition: all  .50s linear;
+	   -moz-transition: all  .50s linear;
+	    -ms-transition: all  .50s linear;
+	     -o-transition: all  .50s linear;
+	        transition: all  .50s linear;
 }
 
 body div.container div.unit_contain div#quotes:hover{
 	height: 200px;
 	z-index: 100;
+	background-color: #D7D7D7;
 }
 
 body div.container div.unit_contain div#quotes p#quote{
@@ -151,9 +152,27 @@ body div.container div.unit_contain div#quotes span#author{
 /****************************************
 ************ calendar   rules ***********
 ****************************************/
+body div.container div.unit_contain:last-child{
+	position: relative;
+}
+
+body div.container div.unit_contain:last-child div.logo p#mois{
+	font-size: .4em;
+}
+
 body div.container div.unit_contain:last-child div.infos{
 	height: 100%;
 	overflow: hidden;
+}
+
+body div.container div.unit_contain:last-child div.infos:hover table{
+	position: absolute;
+	bottom: 30px;
+	background-color: #d7d7d7;
+	width: 65%;
+	margin: 7px;
+	border: 1px solid #7D7D7D;
+	box-shadow: 0 -2px 10px 1px rgba(0, 0, 0, 0.5);
 }
 
 
@@ -161,11 +180,18 @@ body div.container div.unit_contain div.infos table{
 	display: table;
 	width: 95%;
 	margin: auto;
+	bottom: 0;
+	-webkit-transition: bottom .50s linear;
+	   -moz-transition: bottom .50s linear;
+	    -ms-transition: bottom .50s linear;
+	     -o-transition: bottom .50s linear;
+	        transition: bottom .50s linear;
 }
 
 body div.container div.unit_contain:last-child div.infos table caption{
 	display: table-caption;
 	color: #7D7D7D;
+	font-weight: bold;	
 }
 
 body div.container div.unit_contain div.infos table thead{
@@ -187,11 +213,17 @@ body div.container div.unit_contain div.infos table tbody tr{
 body div.container div.unit_contain div.infos table thead tr th{
 	display: table-cell;
 }
+
 body div.container div.unit_contain div.infos table tbody tr td{
 	display: table-cell;
 	text-align: center;
 }
 
+.today{
+	font-weight: bold;
+	color: #FFF;
+	background-color: rgba(125, 125, 125, 1);
+}
 
 /****************************************
 ************ containers rules ***********
