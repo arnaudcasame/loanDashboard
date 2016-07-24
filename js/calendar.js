@@ -4,102 +4,106 @@
 	var today = new Date(),
 	jour = today.getDate(),
 	mois = today.getMonth() + 1,
-	jrSem = today.getDay(),
-	annee = today.getFullYear(),
-	moislong = 0;
+	annee = today.getFullYear();
 
 	// Caching the DOM
 	var cellules = document.querySelectorAll('.calendar-cell');
 	var afficheMois = document.querySelector('#mois');
 
 	// Defining functions
-	function getLongMois(){
-		if(mois === 2){
-			moislong = 28;
-		}else if(mois === 1 || mois === 3 || mois === 5 || mois === 7 || mois === 8 || mois === 10 || mois === 12){
-			moislong = 31;
-		}else{
-			moislong = 30;
+	function isBissextile(year){
+		if(((year % 4) === 0 && (year % 100) !== 0) || (year % 400) === 0 ){
+			return true;
 		}
+		return false;
 	}
 
-	function get1stDay(){
-		for (var i = jour-1; i > 0; i--) {
+	function get1stDay(date){
+		var jrSem = today.getDay();
+		for (var i = date-1; i > 0; i--) {
 			if(jrSem === -1){
 				jrSem = 6;
 			}
-			
 			jrSem--;
 		}
 		return jrSem;
 	}
 
 	function assDateToDays(){
-		var _temp = 1;
-		var ref = get1stDay();
+		var current = false;
+		var arr = [];
+		var longMois = infoMonth(mois);
+		var moisPrec = infoMonth(mois-1);
+		var ref = get1stDay(jour);
 		var len = cellules.length;
+		var _temp = moisPrec.nbreJr - ref + 1;
 		for (var i = 0; i < len; i++) {
-			if(i >= ref && i < moislong + ref){
-				cellules[i].innerText = _temp;
-				cellules[i].textContent = _temp;
-				jour === _temp ? cellules[i].className = 'today' : '';
-				_temp++;
-			}else{
-				cellules[i].innerText = '';
-				cellules[i].textContent = '';
+			if(_temp > moisPrec.nbreJr && !current){
+				_temp = 1;
+				current = true;
+			}else if(_temp > longMois.nbreJr && current){
+				_temp = 1;
+				current = false;
 			}
+			arr.push([_temp, current]);
+			_temp++;
+		};
+		return arr;
+	}
+
+	function render(tableau){
+		afficheMois.innerText = infoMonth(mois).fr;
+		afficheMois.textContent = infoMonth(mois).fr;
+		var len = tableau.length;
+		for (var i = 0; i < len; i++) {
+			cellules[i].innerText = tableau[i][0];
+			cellules[i].textContent = tableau[i][0];
+			!tableau[i][1] ? cellules[i].className = 'faded' : '';
+			((jour == tableau[i][0]) && tableau[i][1]) ? cellules[i].className = 'today' : '';
 		}
 	}
 
-	function convMonth(monthNum){
+	function infoMonth(monthNum){
 		 switch (monthNum) {
 	        case 1:
-	            return "Janvier";
+	            return {fr: "janvier", nbreJr : 31, en:"january", abren: "jan.", abrfr: "janv."};
 	            break;
 	        case 2:
-	            return "Fevrier";
+	            return {fr: "février", nbreJr: isBissextile(annee) ? 29 : 28, en:"february", abren: "feb.", abrfr: "févr."};
 	            break;
 	        case 3:
-	            return "Mars";
+	            return {fr: "mars", nbreJr : 31, en:"march", abren: "mar.", abrfr: "mars"};
 	            break;
 	        case 4:
-	            return "Avril";
+	            return {fr: "avril", nbreJr : 30, en:"april", abren: "apr.", abrfr: "avr."};
 	            break;
 	        case 5:
-	            return "Mai";
+	            return {fr: "mai", nbreJr : 31, en:"may", abren: "may", abrfr: "mai"};
 	            break;
 	        case 6:
-	            return "Juin";
+	            return {fr: "juin", nbreJr : 30, en:"june", abren: "jun.", abrfr: "juin"};
 	            break;
 	        case 7:
-	            return "Juillet";
+	            return {fr: "juillet", nbreJr : 31, en:"july", abren: "jul.", abrfr: "juil."};
 	            break;
 	        case 8:
-	            return "Aout";
+	            return {fr: "août", nbreJr : 31, en:"august", abren: "aug.", abrfr: "août"};
 	            break;
 	        case 9:
-	            return "Septembre";
+	            return {fr: "septembre", nbreJr : 30, en:"september", abren: "sept.", abrfr: "sept."};
 	            break;
 	        case 10:
-	            return "Octobre";
+	            return {fr: "octobre", nbreJr : 31, en:"october", abren: "oct.", abrfr: "oct."};
 	            break;
 	        case 11:
-	            return "Novembre";
+	            return {fr: "novembre", nbreJr : 30, en:"november", abren: "nov.", abrfr: "nov."};
 	            break;
 	        default:
-	            return "Decembre";
+	            return {fr: "décembre", nbreJr : 31, en:"december", abren: "dec.", abrfr: "déc."};
 	    }
 	}
 
-	function init(){
-		afficheMois.innerText = convMonth(mois);
-		afficheMois.textContent = convMonth(mois);
-
-		getLongMois();
-		assDateToDays();
-	}
-
-	// initializing and displaying the calendar
-	init();
+	// rendering the calendar
+	render(assDateToDays());
 
 })();
