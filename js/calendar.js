@@ -29,7 +29,7 @@
 		return jrSem;
 	}
 
-	function assDateToDays(){
+	function calendarData(){
 		var current = false;
 		var arr = [];
 		var longMois = infoMonth(mois);
@@ -104,6 +104,6 @@
 	}
 
 	// rendering the calendar
-	render(assDateToDays());
+	render(calendarData());
 
 })();
