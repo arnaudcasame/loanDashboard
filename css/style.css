@@ -140,15 +140,6 @@ body div.container div.unit_contain div#quotes span#author{
 	font-style: italic;
 }
 
-.faded{
-	display: block;
-	-webkit-transition: display .25s linear;
-	   -moz-transition: display .25s linear;
-	    -ms-transition: display .25s linear;
-	     -o-transition: display .25s linear;
-	        transition: display .25s linear;
-}
-
 /****************************************
 ************ calendar   rules ***********
 ****************************************/
@@ -223,6 +214,10 @@ body div.container div.unit_contain div.infos table tbody tr td{
 	font-weight: bold;
 	color: #FFF;
 	background-color: rgba(125, 125, 125, 1);
+}
+
+.faded{
+	color: rgba(125, 125, 125, 0.7);
 }
 
 /****************************************
