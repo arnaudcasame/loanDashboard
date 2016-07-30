@@ -1,0 +1,31 @@
+{
+  "name": "financedashboard",
+  "version": "1.0.0",
+  "description": "A finance dashboard which has informations that helps in decision making",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/djcase001/loanDashboard.git"
+  },
+  "keywords": [
+    "JavaScript",
+    "Modular Programming",
+    "Design Patterns",
+    "AJAX",
+    "time",
+    "table",
+    "loan",
+    "plot graphic",
+    "exchange rate",
+    "interest rate"
+  ],
+  "author": "Arnaud Casame",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/djcase001/loanDashboard/issues"
+  },
+  "homepage": "https://github.com/djcase001/loanDashboard#readme"
+}
