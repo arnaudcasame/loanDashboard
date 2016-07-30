@@ -103,7 +103,7 @@ body div.container div.unit_contain div.infos div.taux:hover{
 }
 
 body div.container div.unit_contain div.infos div.taux p{
-	display: block;
+	display: inline-block;
 	margin: 0;
 	padding: 0;
 	font-size: 1.1em;
