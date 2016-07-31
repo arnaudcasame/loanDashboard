@@ -1,10 +1,10 @@
 {
   "name": "financedashboard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A finance dashboard which has informations that helps in decision making",
   "main": "index.js",
   "scripts": {
-    "start": "open http://localhost:3000 & httpster -p 3000"
+    "start": "Open http://localhost:3000 & httpster -p 3000"
   },
   "repository": {
     "type": "git",
