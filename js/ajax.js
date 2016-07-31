@@ -83,10 +83,10 @@ function treatQuotes(data){
 
 function treatCurrency(data){
 	gourde.innerText = arrondi(data.quotes.USDHTG, 2)+' HTG';
-	euro.innerText = arrondi(data.quotes.USDEUR, 2);
+	euro.innerHTML = arrondi(data.quotes.USDEUR, 2)+ " <span><i class='fa fa-euro'></i></span>";
 	canada.innerText = arrondi(data.quotes.USDCAD, 2)+' CAD';
 	gourde.textContent = arrondi(data.quotes.USDHTG, 2)+' HTG';
-	euro.textContent = arrondi(data.quotes.USDEUR, 2);
+	//euro.textContent = arrondi(data.quotes.USDEUR, 2);
 	canada.textContent = arrondi(data.quotes.USDCAD, 2)+' CAD';
 	var jourdhui = new Date(data.timestamp * 1000);
 	//console.log(jourdhui.toString());
@@ -130,6 +130,8 @@ function treatWords(data){
 				terme.textContent = expression[n].innerHTML;
 				definition.innerText = data[0][expression[n].innerHTML];
 				definition.textContent = data[0][expression[n].innerHTML];
+				search.value = '';
+				searchResult.innerHTML = '';
 			};
 		}
 	};
