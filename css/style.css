@@ -77,6 +77,49 @@ body header#head div#search_contain button#search i.fa{
 }
 
 /****************************************
+********* search result rules ***********
+****************************************/
+
+body header#head div#search_contain ul#search-result{
+	position: absolute;
+	left: 0;
+	top: 15px;
+	list-style: none;
+	background-color: rgba(207, 207, 207, 0.5);
+	padding: 0;
+	width: 100%;
+}
+
+body header#head div#search_contain ul#search-result li{
+	width: 98%;
+	display: block;
+	color: #FFF;
+	background-color: rgba(125, 125, 125, 1);
+	padding: 1%;
+	margin: 5px 0;
+	cursor: pointer;
+	-webkit-transition: all .5s linear;
+	   -moz-transition: all .5s linear;
+	    -ms-transition: all .5s linear;
+	     -o-transition: all .5s linear;
+	        transition: all .5s linear;
+}
+
+body header#head div#search_contain ul#search-result li:hover{
+	background-color: #fff;
+	color: rgba(125, 125, 125, 1);
+}
+
+body header#head div#search_contain ul#search-result li a{
+	text-decoration: none;
+	color: inherit;
+	display: block;
+	width: 100%;
+}
+
+
+
+/****************************************
 ************ cards infos rules **********
 ****************************************/
 
@@ -558,9 +601,9 @@ body div#analyse section{
 	overflow: hidden;
 }
 
-body div#analyse section:last-child{
+body div#analyse section:nth-child(2){
 	border-top: 1px solid #7D7D7D;
-
+	border-bottom: 1px solid #7D7D7D;
 }
 
 body div#analyse section h2{
@@ -613,6 +656,16 @@ div#analyse section:target h2
 	font-size: 1.1em;
 	color: #6A6A6A;
 }
+
+div#analyse section#section3 p,
+div#analyse section#section3 h3{
+	padding: 2%;
+	color: #7D7D7D;
+}
+
+/***************************************
+***** comparaison container rules ******
+***************************************/
 
 body div.container div#comparaison{
 	margin-top: 1%;
