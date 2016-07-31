@@ -1,12 +1,21 @@
-var quotesJsonFileUrl = 'js/quotes.json';
+/* Quotes */
+var quotesJsonFileUrl = './json/quotes.json';
 var authorPlace = document.getElementById('author');
 var quotePlace = document.getElementById('quote');
 var quoteContain = document.getElementById('quotes');
+
+/* Currency layer */
 var currlayer = 'http://apilayer.net/api/live?access_key=a3bc71915116d84f1765f34ac76a82b7';
-var currlayer2 = 'js/currencylayer.json';
+var currlayer2 = './json/currencylayer.json';
 var gourde = document.getElementById('gourde');
 var euro = document.getElementById('euro');
 var canada = document.getElementById('canada');
+
+/* Search section */
+var search = document.getElementById('searchin');
+var searchResult = document.getElementById('search-result');
+var definition = document.getElementById('definition');
+var terme = document.getElementById('terme');
 
 
 function request(fileUrl){
@@ -25,6 +34,8 @@ function request(fileUrl){
 				if(Array.isArray(data)){
 					if(data[0].hasOwnProperty('author')){
 						treatQuotes(data);
+					}else{
+						treatWords(data);
 					}
 				}else if(typeof data === 'object'){
 					//console.log(data);
@@ -38,6 +49,7 @@ function request(fileUrl){
 
 request(quotesJsonFileUrl);
 request(currlayer2);
+request('json/finance.json');
 
 function treatQuotes(data){
 	var len = data.length;	
@@ -56,14 +68,14 @@ function treatQuotes(data){
 		quotePlace.textContent = '"'+text+'"';
 		
 		quoteContain.onmouseover = function(){
-			quotePlace.innerText = '"'+data[tirage]['quote']+'"';
-			quotePlace.textContent = '"'+data[tirage]['quote']+'"';
-		}
+			quotePlace.innerText = '"'+data[tirage]['quote'] + '"';
+			quotePlace.textContent = '"'+data[tirage]['quote'] + '"';
+		};
 
 		quoteContain.onmouseout = function(){
 			quotePlace.innerText = '"'+text+'"';
 			quotePlace.textContent = '"'+text+'"';
-		}
+		};
 	}
 	setInterval(repeat, 10000);
 	repeat();
@@ -77,5 +89,51 @@ function treatCurrency(data){
 	euro.textContent = arrondi(data.quotes.USDEUR, 2);
 	canada.textContent = arrondi(data.quotes.USDCAD, 2)+' CAD';
 	var jourdhui = new Date(data.timestamp * 1000);
-	console.log(jourdhui.toString());
+	//console.log(jourdhui.toString());
+}
+
+function treatWords(data){
+	var listMots = Object.keys(data[0]);
+	search.onkeyup = function(){
+		var list = [];
+		for(var word in listMots){
+			var cle = listMots[word];
+			cle = cle.toLowerCase();
+			if(cle.indexOf(this.value.toLowerCase()) !== -1){
+				
+				var listItem = "<li><a href='#section3' class='finance-expression'>"+listMots[word]+'</a></li>';
+				//console.log(listItem);
+				list.push(listItem);
+				
+			}
+			
+		}
+
+		if(this.value === ''){
+			list = [];
+		}
+
+		searchResult.innerHTML = '';
+		for(var def in list){
+			searchResult.innerHTML += list[def];
+		}
+		var expression = document.querySelectorAll('.finance-expression');
+		//console.log(list);
+		for(var i=0; i<expression.length; i++){
+			expression[i].onclick = whichExpression(i, data);
+		}
+
+		function whichExpression(n, data){
+
+			return function(){
+				terme.innerText = expression[n].innerHTML;
+				terme.textContent = expression[n].innerHTML;
+				definition.innerText = data[0][expression[n].innerHTML];
+				definition.textContent = data[0][expression[n].innerHTML];
+			};
+		}
+	};
+
+	
+
 }
