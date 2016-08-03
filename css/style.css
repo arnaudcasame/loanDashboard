@@ -191,7 +191,13 @@ body div.container div.unit_contain:last-child{
 }
 
 body div.container div.unit_contain:last-child div.logo p#mois{
+	padding-top: 10px;
+}
+
+body div.container div.unit_contain:last-child div.logo p#mois,
+body div.container div.unit_contain:last-child div.logo p#annee{
 	font-size: .4em;
+	margin: 0px;
 }
 
 body div.container div.unit_contain:last-child div.infos{
