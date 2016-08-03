@@ -9,6 +9,7 @@
 	// Caching the DOM
 	var cellules = document.querySelectorAll('.calendar-cell');
 	var afficheMois = document.querySelector('#mois');
+	var afficheAnnee = document.querySelector('#annee');
 
 	// Defining functions
 	function isBissextile(year){
@@ -54,6 +55,8 @@
 	function render(tableau){
 		afficheMois.innerText = infoMonth(mois).fr;
 		afficheMois.textContent = infoMonth(mois).fr;
+		afficheAnnee.innerText = annee;
+		afficheAnnee.textContent = annee;
 		var len = tableau.length;
 		for (var i = 0; i < len; i++) {
 			cellules[i].innerText = tableau[i][0];
