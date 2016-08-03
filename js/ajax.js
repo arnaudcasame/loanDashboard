@@ -16,40 +16,29 @@ var search = document.getElementById('searchin');
 var searchResult = document.getElementById('search-result');
 var definition = document.getElementById('definition');
 var terme = document.getElementById('terme');
+var termsUrl = 'json/finance.json';
 
-
-function request(fileUrl){
+function request(dataUrl, treats){
 		var xhr, data;
 		if(window.XMLHttpRequest){
 			xhr = new XMLHttpRequest();
 		}else {
 			xhr = new ActiveXObject("Microsoft.XMLHTTP");
 		}
-		xhr.open("GET", fileUrl);
+		xhr.open("GET", dataUrl);
 		xhr.onreadystatechange = function(){
-				//console.log(xhr.status);
 			if((xhr.readyState == 4) && (xhr.status == 200)){
 				data = JSON.parse(xhr.responseText);
-				//console.log(typeof data);
-				if(Array.isArray(data)){
-					if(data[0].hasOwnProperty('author')){
-						treatQuotes(data);
-					}else{
-						treatWords(data);
-					}
-				}else if(typeof data === 'object'){
-					//console.log(data);
-					treatCurrency(data);
-				}
+				treats(data);
 			}else if(xhr.readyState < 4){}
 		};
 		xhr.send(null);
 }
 
 
-request(quotesJsonFileUrl);
-request(currlayer2);
-request('json/finance.json');
+request(quotesJsonFileUrl, treatQuotes);
+request(currlayer2, treatCurrency);
+request(termsUrl, treatWords);
 
 function treatQuotes(data){
 	var len = data.length;	
