@@ -145,12 +145,35 @@ body div.container div.unit_contain div.infos div.taux:hover{
 	color: #FFF;
 }
 
-body div.container div.unit_contain div.infos div.taux p{
+body div.container div.unit_contain div.infos div.taux p:last-child{
+	font-weight: bold;
+	font-size: 0.7em;
+	display: block;
+}
+
+body div.container div.unit_contain div.infos div.taux p:first-child{
 	display: block;
 	margin: 0;
 	padding: 0;
-	font-size: 1.1em;
+	font-size: 1.7em;
 	font-weight: bold;
+}
+
+body div.container div.unit_contain div.infos div.taux div.room{
+	display: inline-block;
+	font-size: 0.7em;
+	text-decoration: underline;
+	margin: 0 5px 0 0;
+}
+
+body div.container div.unit_contain div.infos div.taux div.room p i.fa{
+	margin: 0 2px 0 2px;
+	text-decoration: none; !important
+}
+
+body div.container div.unit_contain div.infos div.taux div.room > p{
+	font-size: 1.3em;
+	text-decoration: none; !important
 }
 
 body div.container div.unit_contain div#quotes{
