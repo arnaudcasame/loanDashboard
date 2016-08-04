@@ -18,6 +18,33 @@ var definition = document.getElementById('definition');
 var terme = document.getElementById('terme');
 var termsUrl = 'json/finance.json';
 
+/* Weather section */
+
+if(navigator.geolocation){
+	navigator.geolocation.getCurrentPosition(successCallBack, failureCallBack);
+}else{
+	alert('Votre navigateur web ne supporte pas la Geolocalisation');
+}
+
+function successCallBack(position){
+	var longitude = position.coords.longitude;
+	var latitude = position.coords.latitude;
+
+	request(weatherUrl+'?lat='+latitude+'&lon='+longitude+'&appid=8538a85ec288e688ab0baab550784a50', treatWeather);	
+}
+
+function failureCallBack(){
+	request(weatherLocalUrl, treatWeather);
+	alert('Your browser doesn\'t supported Geolocalisation');
+}
+
+var picture = document.getElementById('weatherlogo');
+var temperatu = document.getElementById('temperature');
+var endroit = document.getElementById('endroit');
+var description = document.getElementById('description');
+var weatherLocalUrl = 'json/weather.json';
+var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather';
+
 function request(dataUrl, treats){
 		var xhr, data;
 		if(window.XMLHttpRequest){
@@ -35,10 +62,10 @@ function request(dataUrl, treats){
 		xhr.send(null);
 }
 
-
 request(quotesJsonFileUrl, treatQuotes);
 request(currlayer2, treatCurrency);
 request(termsUrl, treatWords);
+
 
 function treatQuotes(data){
 	var len = data.length;	
@@ -66,7 +93,7 @@ function treatQuotes(data){
 			quotePlace.textContent = '"'+text+'"';
 		};
 	}
-	setInterval(repeat, 10000);
+	setInterval(repeat, 10800000);
 	repeat();
 }
 
@@ -89,11 +116,9 @@ function treatWords(data){
 			var cle = listMots[word];
 			cle = cle.toLowerCase();
 			if(cle.indexOf(this.value.toLowerCase()) !== -1){
-				
 				var listItem = "<li><a href='#section3' class='finance-expression'>"+listMots[word]+'</a></li>';
 				//console.log(listItem);
 				list.push(listItem);
-				
 			}
 			
 		}
@@ -115,16 +140,41 @@ function treatWords(data){
 		function whichExpression(n, data){
 
 			return function(){
-				terme.innerText = expression[n].innerHTML;
-				terme.textContent = expression[n].innerHTML;
-				definition.innerText = data[0][expression[n].innerHTML];
-				definition.textContent = data[0][expression[n].innerHTML];
+				terme.innerHTML = expression[n].innerHTML;
+				definition.innerHTML = data[0][expression[n].innerHTML];
 				search.value = '';
 				searchResult.innerHTML = '';
 			};
 		}
 	};
+}
 
-	
 
+
+
+function treatWeather(data){
+
+	var weather = {
+		"zone": data.name,
+		"temp" : Math.floor(data.main.temp-273.15),
+		"wind" : data.wind.speed,
+		"status": data.weather[0].description,
+		"picture": data.weather[0].icon,
+		"humidity": data.main.humidity,
+		"min_temp": data.main.temp_min,
+		"max_temp": data.main.temp_max,
+		"sunr" : data.sys.sunrise,
+		"heure" : data.dt,
+		"suns" : data.sys.sunset
+	};
+
+	picture.src ='weather/'+weather.picture+'.png';
+	//heure.innerHTML = (new Date(weather.heure * 1000)).toGMTString();
+	endroit.innerHTML = 'Commune : '+weather.zone;
+	description.innerHTML = 'Description : '+weather.status;
+	//vent.innerHTML = weather.wind+' mph';
+	//humidite.innerHTML = weather.humidity+' %';
+	//liste[4].innerHTML = (new Date(weather.sunr * 1000)).toUTCString();
+	//liste[5].innerHTML = (new Date(weather.suns * 1000)).toGMTString();
+	temperatu.innerHTML = 'Temperature : '+weather.temp+' degrée celcius';
 }
