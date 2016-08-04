@@ -13,7 +13,7 @@
 	<body>
 		<header id='head'>
 			<div id="search_contain">
-				<input type="text" id='searchin' placeholder='Search...'>
+				<input type="text" id='searchin' placeholder='Search...' autocomplete="true">
 				<button id='search'>
 					<i class='fa fa-search'></i>
 				</button>
@@ -50,37 +50,37 @@
 					<div class='taux'>
 						<div class="room">
 								USD
-							<p><i class='fa fa-caret-up'></i>16</p>
-							<p><i class='fa fa-caret-down'></i>12</p>
+							<p>16</p>
+							<p><!-- <i class='fa fa-caret-down'></i> -->12</p>
 						</div>
 						<div class='room'>
 						HTG
-							<p>27<i class='fa fa-caret-up'></i></p>
-							<p>23<i class='fa fa-caret-down'></i></p>
+							<p>27<!-- <i class='fa fa-caret-up'></i> --></p>
+							<p>23</p>
 						</div>
 					</div>
 					<div class='taux'>
 						<div class="room">
 								USD
-							<p><i class='fa fa-caret-up'></i>13</p>
-							<p><i class='fa fa-caret-down'></i>8</p>
+							<p>13</p>
+							<p>8</p>
 						</div>
 						<div class='room'>
 								HTG
-							<p>13<i class='fa fa-caret-up'></i></p>
-							<p>8<i class='fa fa-caret-down'></i></p>
+							<p>13</p>
+							<p>8</p>
 						</div>
 					</div>
 					<div class='taux'>
 						<div class="room">
 								USD
-							<p><i class='fa fa-caret-up'></i>11</p>
-							<p><i class='fa fa-caret-down'></i>8</p>
+							<p>11</p>
+							<p>8</p>
 						</div>
 						<div class='room'>
 								HTG
-							<p>11<i class='fa fa-caret-up'></i></p>
-							<p>8<i class='fa fa-caret-down'></i></p>
+							<p>11</p>
+							<p>8</p>
 						</div>
 					</div>
 				</div>
@@ -97,10 +97,16 @@
 			</div>
 			<div class='unit_contain'>
 				<div class='logo'>
-					<i class='fa fa-cloud'></i>
+					<!-- <i class='fa fa-cloud'></i> -->
+					<img id='weatherlogo'>
 				</div>
 				<div class='infos'>
 					<h3>Weather</h3>
+					<div class="weather">
+						<p id="endroit"></p>
+						<p id="description"></p>
+						<p id="temperature"></p>
+					</div>
 				</div>
 			</div>
 			<div class='unit_contain'>
@@ -213,8 +219,8 @@
 						fréquence (1 paiement par an)
 					</label>
 					<label class='frequence'>
-						<input type='radio' id='_2' name='frequence' value='2' class='freq'>
-						fréquence (2 paiements par an)
+						<input type='radio' id='_2' name='frequence' value='6' class='freq'>
+						fréquence (6 paiements par an)
 					</label>
 					<label class='frequence'>
 						<input type='radio' id='_12' name='frequence' value='12' class='freq'>
@@ -241,13 +247,16 @@
 		<div id="analyse">
 			<section id='section1'>
 				<h2 id="graph"><a href="#section1"><i class="fa fa-refresh"></i>Graphes</a></h2>
+				<a href="#">Back</a>
 				<div id="canvas-holder"></div>
 			</section>
 			<section id='section2'>
 				<h2 id='tablo'><a href="#section2"><i class="fa fa-refresh"></i>Tableau</a></h2>
+				<a href="#">Back</a>
 			</section>
 			<section id='section3'>
 				<h2 ><a href="#section3"><i class="fa fa-refresh"></i>Définition</a></h2>
+				<a href="#">Back</a>
 				<h3 id='terme'></h3>
 				<p id="definition"></p>
 			</section>
