@@ -207,6 +207,21 @@ body div.container div.unit_contain div#quotes span#author{
 }
 
 /****************************************
+************ weather   rules ***********
+****************************************/
+body div.container div.unit_contain div.logo img#weatherlogo{
+	width: 80%;
+}
+
+body div.container div.unit_contain div.infos div.weather{
+	margin-left: 5px;
+}
+
+body div.container div.unit_contain div.infos div.weather p{
+	display: block;
+}
+
+/****************************************
 ************ calendar   rules ***********
 ****************************************/
 body div.container div.unit_contain:last-child{
