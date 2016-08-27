@@ -101,8 +101,6 @@ var Pret = (function(){
 		function render(){
 			resultat.textContent = paiement;
 
-			
-
 			if(devise === "USD" && calculated){
 				cours.textContent =  '';
 				cours.className = "fa fa-dollar";
