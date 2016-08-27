@@ -23,7 +23,7 @@ var termsUrl = 'json/finance.json';
 if(navigator.geolocation){
 	navigator.geolocation.getCurrentPosition(successCallBack, failureCallBack);
 }else{
-	alert('Votre navigateur web ne supporte pas la Geolocalisation');
+	alert('Votre navigateur web ne supporte pas la Géolocalisation');
 }
 
 function successCallBack(position){
@@ -35,12 +35,13 @@ function successCallBack(position){
 
 function failureCallBack(){
 	request(weatherLocalUrl, treatWeather);
-	alert('Your browser doesn\'t supported Geolocalisation');
+	alert('Your browser doesn\'t support Geolocation');
 }
 
 var picture = document.getElementById('weatherlogo');
 var temperatu = document.getElementById('temperature');
 var endroit = document.getElementById('endroit');
+var heure = document.getElementById('heure');
 var description = document.getElementById('description');
 var weatherLocalUrl = 'json/weather.json';
 var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather';
@@ -63,7 +64,7 @@ function request(dataUrl, treats){
 }
 
 request(quotesJsonFileUrl, treatQuotes);
-request(currlayer2, treatCurrency);
+request(currlayer, treatCurrency);
 request(termsUrl, treatWords);
 
 
@@ -176,5 +177,5 @@ function treatWeather(data){
 	//humidite.innerHTML = weather.humidity+' %';
 	//liste[4].innerHTML = (new Date(weather.sunr * 1000)).toUTCString();
 	//liste[5].innerHTML = (new Date(weather.suns * 1000)).toGMTString();
-	temperatu.innerHTML = 'Temperature : '+weather.temp+' degrée celcius';
+	temperatu.innerHTML = 'Temperature : '+weather.temp+' degrés CELCIUS';
 }
