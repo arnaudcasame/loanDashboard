@@ -3,7 +3,7 @@
 	<head>
 		<meta charset="utf-8">
 		<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
-		<title>Loan Dashboard</title>
+		<title>Finance Dashboard</title>
 		<link rel="stylesheet" href="css/normalize.css">
 		<link rel="stylesheet" href="css/font-awesome.css">
 		<link rel="stylesheet" type="text/css" href="css/style.css">
@@ -13,7 +13,7 @@
 	<body>
 		<header id='head'>
 			<div id="search_contain">
-				<input type="text" id='searchin' placeholder='Search...' autocomplete="true">
+				<input type="text" id='searchin' placeholder='Recherche...' autocomplete>
 				<button id='search'>
 					<i class='fa fa-search'></i>
 				</button>
@@ -49,36 +49,36 @@
 					<h3>Taux d'intérêt</h3>
 					<div class='taux'>
 						<div class="room">
-								USD
+								<p class='devise-type'>USD</p>
 							<p>16</p>
 							<p><!-- <i class='fa fa-caret-down'></i> -->12</p>
 						</div>
 						<div class='room'>
-						HTG
+						<p class='devise-type'>HTG</p>
 							<p>27<!-- <i class='fa fa-caret-up'></i> --></p>
 							<p>23</p>
 						</div>
 					</div>
 					<div class='taux'>
 						<div class="room">
-								USD
+								<p class='devise-type'>USD</p>
 							<p>13</p>
 							<p>8</p>
 						</div>
 						<div class='room'>
-								HTG
+								<p class='devise-type'>HTG</p>
 							<p>13</p>
 							<p>8</p>
 						</div>
 					</div>
 					<div class='taux'>
 						<div class="room">
-								USD
+								<p class='devise-type'>USD</p>
 							<p>11</p>
 							<p>8</p>
 						</div>
 						<div class='room'>
-								HTG
+								<p class='devise-type'>HTG</p>
 							<p>11</p>
 							<p>8</p>
 						</div>
@@ -101,11 +101,12 @@
 					<img id='weatherlogo'>
 				</div>
 				<div class='infos'>
-					<h3>Weather</h3>
+					<h3>Meteo</h3>
 					<div class="weather">
 						<p id="endroit"></p>
 						<p id="description"></p>
 						<p id="temperature"></p>
+						<!-- <p id="heure"></p> -->
 					</div>
 				</div>
 			</div>
@@ -166,18 +167,18 @@
 								<td class="calendar-cell">29</td>
 								<td class="calendar-cell">30</td>
 								<td class="calendar-cell">31</td>
-								<td class="calendar-cell"></td>
-								<td class="calendar-cell"></td>
-								<td class="calendar-cell"></td>
-								<td class="calendar-cell"></td>
+								<td class="calendar-cell">1</td>
+								<td class="calendar-cell">2</td>
+								<td class="calendar-cell">3</td>
+								<td class="calendar-cell">4</td>
 							</tr><tr>
-								<td class="calendar-cell"></td>
-								<td class="calendar-cell"></td>
-								<td class="calendar-cell"></td>
-								<td class="calendar-cell"></td>
-								<td class="calendar-cell"></td>
-								<td class="calendar-cell"></td>
-								<td class="calendar-cell"></td>
+								<td class="calendar-cell">5</td>
+								<td class="calendar-cell">6</td>
+								<td class="calendar-cell">7</td>
+								<td class="calendar-cell">8</td>
+								<td class="calendar-cell">9</td>
+								<td class="calendar-cell">10</td>
+								<td class="calendar-cell">11</td>
 							</tr>
 						</tbody>
 					</table>
