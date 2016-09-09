@@ -4,7 +4,7 @@
   "description": "A finance dashboard which has informations that helps in decision making",
   "main": "index.js",
   "scripts": {
-    "start": "Open http://localhost:3000 & httpster -p 3000"
+    "start": "open http://localhost:3000 & httpster -p 3000"
   },
   "repository": {
     "type": "git",
