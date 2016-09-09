@@ -1,6 +1,44 @@
 /*****************************************
 * Media Queries rules for responsiveness *
 *****************************************/
+@media screen and (max-width: 350px) {
+
+	/* Taux Change part */
+	body div.container div.unit_contain div.infos div.taux p:first-child{
+		font-size: 1.1em;
+	}
+	
+	body div.container div.unit_contain div.infos div.taux p:last-child{
+		font-size: 0.6em;
+	}
+
+	/* Taux Interet part */
+	body div.container div.unit_contain div.infos div.taux div.room{
+		font-size: 0.52em;
+	}
+
+	/* Quotes part */
+	body div.container div.unit_contain div#quotes p#quote{
+		font-size: 0.7em;
+	}
+
+	body div.container div.unit_contain div#quotes span{
+		font-size: 0.9em;
+		float: right;
+	}
+
+	/* Weather part */
+	body div.container div.unit_contain div.infos div.weather p{
+		font-size: .7em;
+	}
+
+	/* Calendar part */
+	body div.container div.unit_contain:last-child div.logo p#mois,
+	body div.container div.unit_contain:last-child div.logo p#annee{
+		font-size: .3em;
+	}
+}
+
 @media screen and (max-width: 480px) {
 
 	body header#head div#search_contain{
@@ -143,7 +181,15 @@
 
 }
 
-@media (min-width: 750px){
+@media (min-width: 750px) and (max-width: 1200px){
+
+	body div#analyse{
+		display: block;
+		max-width: 1000px;
+		width: 70%;
+		margin: 0 auto;
+		padding: 0;
+	}
 
 	body div#analyse table{
 		top: 0;
@@ -163,10 +209,10 @@
 		margin-top: 60px;
 	}
 
-	body div#analyse{
+	/* body div#analyse{
 		width: 37%;
 		margin-top: 60px;
 		padding: 0;
-	}
+	} */
 
 }
