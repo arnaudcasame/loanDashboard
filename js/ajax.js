@@ -35,7 +35,7 @@ function successCallBack(position){
 
 function failureCallBack(){
 	request(weatherLocalUrl, treatWeather);
-	alert('Your browser doesn\'t support Geolocation');
+	alert('Your browser doesn\'t support Geolocation \n Votre navigateur ne supporte pas la géolocalisation');
 }
 
 var picture = document.getElementById('weatherlogo');
