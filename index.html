@@ -47,41 +47,89 @@
 				</div>
 				<div class='infos'>
 					<h3>Taux d'intérêt</h3>
-					<div class='taux'>
-						<div class="room">
-								<p class='devise-type'>USD</p>
-							<p>16</p>
-							<p><!-- <i class='fa fa-caret-down'></i> -->12</p>
+					<div aria-haspopup='true' class='interet'>
+						<p>Consommation</p>
+						<div class="representation">
+							<i class='fa fa-shopping-basket'></i>
 						</div>
-						<div class='room'>
-						<p class='devise-type'>HTG</p>
-							<p>27<!-- <i class='fa fa-caret-up'></i> --></p>
-							<p>23</p>
-						</div>
+						<table class="popup">
+							<caption>Intérêts à la Consommation</caption>
+							<thead>
+								<tr>
+									<th>Taux</th>
+									<th>USD</th>
+									<th>HTG</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Max</td>
+									<td>18%</td>
+									<td>30%</td>
+								</tr>
+								<tr>
+									<td>Min</td>
+									<td>13%</td>
+									<td>17%</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<div class='taux'>
-						<div class="room">
-								<p class='devise-type'>USD</p>
-							<p>13</p>
-							<p>8</p>
+					<div aria-haspopup='true' class='interet'>
+						<p>Véhicule</p>
+						<div class="representation">
+							<i class='fa fa-car'></i>
 						</div>
-						<div class='room'>
-								<p class='devise-type'>HTG</p>
-							<p>13</p>
-							<p>8</p>
-						</div>
+						<table class="popup">
+							<caption>Intérêts Véhicule</caption>
+							<thead>
+								<tr>
+									<th>Taux</th>
+									<th>USD</th>
+									<th>HTG</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Max</td>
+									<td>14%</td>
+									<td>14%</td>
+								</tr>
+								<tr>
+									<td>Min</td>
+									<td>8%</td>
+									<td>8%</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
-					<div class='taux'>
-						<div class="room">
-								<p class='devise-type'>USD</p>
-							<p>11</p>
-							<p>8</p>
+					<div aria-haspopup='true' class='interet'>
+						<p>Hypothèque</p>
+						<div class="representation">
+							<i class='fa fa-home'></i>
 						</div>
-						<div class='room'>
-								<p class='devise-type'>HTG</p>
-							<p>11</p>
-							<p>8</p>
-						</div>
+						<table class="popup">
+							<caption>Intérêts Hypothèque</caption>
+							<thead>
+								<tr>
+									<th>Taux</th>
+									<th>USD</th>
+									<th>HTG</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Max</td>
+									<td>13%</td>
+									<td>13%</td>
+								</tr>
+								<tr>
+									<td>Min</td>
+									<td>8%</td>
+									<td>8%</td>
+								</tr>
+							</tbody>
+						</table>
 					</div>
 				</div>
 			</div>
@@ -90,7 +138,7 @@
 					<i class='fa fa-quote-left'></i>
 				</div>
 				<div class='infos' id='quotes'>
-					<h3>Citations de success</h3>
+					<h3>Citations de succès</h3>
 					<p id='quote'>"He who is not courageous enough to take risks will accomplish nothing in life. "</p>
 					<span id='author'>- Muhammad Ali</span>
 				</div>
@@ -117,7 +165,7 @@
 					<p id="annee"></p>
 				</div>
 				<div class='infos'>
-					<table>
+					<table class='calendar'>
 						<caption>Calendrier</caption>
 						<thead>
 							<tr>
