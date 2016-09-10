@@ -19,4 +19,10 @@ $(document).ready(function(){
 		$('div.logo').removeClass('logo-active');
 		*/
 	});
+	$('.popup').on('click', function(){
+		$(this).fadeOut('slow');
+	});
+	$('.interet').on('mouseover', function(){
+		$(this).find('table.popup').fadeIn('slow');
+	});
 });
