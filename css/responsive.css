@@ -13,8 +13,14 @@
 	}
 
 	/* Taux Interet part */
-	body div.container div.unit_contain div.infos div.taux div.room{
-		font-size: 0.52em;
+	body div.container div.unit_contain div.infos div.interet table.popup{
+		font-size: 0.9em;
+		width: 150px;
+		left: -80px;
+	}
+
+	body div.container div.unit_contain div.infos div.interet table.popup caption{
+		font-size: 0.9em;
 	}
 
 	/* Quotes part */
