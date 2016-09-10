@@ -169,25 +169,121 @@ body div.container div.unit_contain div.infos div.taux p:first-child{
 	font-weight: bold;
 }
 
-body div.container div.unit_contain div.infos div.taux div.room{
+/****************************************
+********** Taux d'interet rules *********
+****************************************/
+
+body div.container div.unit_contain div.infos div.interet{
 	display: inline-block;
-	font-size: 0.7em;
-	margin: 0 5px 0 0;
-	padding: 0;
-	//border: 1px solid red;
+	position: relative;
+	width: 32%;
+	height: 60%;
+	margin-top: 0;
+	text-align: center;
+	background: rgba(207, 207, 207, 0.5);
+	padding-top: 10px;
+	cursor: pointer;
 }
 
-body div.container div.unit_contain div.infos div.taux div.room p.devise-type{
-	text-decoration: underline;
-	padding-top: 0;
-	margin-top: 0;
+body div.container div.unit_contain div.infos div.interet div.representation{
+	font-size: 1.5em;
 }
 
-body div.container div.unit_contain div.infos div.taux div.room > p{
-	font-size: 1.3em;
+body div.container div.unit_contain div.infos div.interet table.popup{
+	position: absolute;
+	display: table;
+	background-color: #fff;
+	color: #7D7D7D;
+	border: 1px solid #7D7D7D;
+	z-index: 100;
+	width: 200px;
+	font-size: .8em;
+	top: 0px;
+	left: -80px;
+	opacity: 0;
+	text-align: left;
+	list-style: none;
+	pointer-events: none;
+	-webkit-transition: all .5s linear;
+	   -moz-transition: all .5s linear;
+	    -ms-transition: all .5s linear;
+	     -o-transition: all .5s linear;
+	        transition: all .5s linear;	
+}
+
+body div.container div.unit_contain div.infos div.interet table.popup caption{
+	display: table-caption;
+	background-color: #fff;
+	color: #7D7D7D;
+	border: 1px solid #7D7D7D;
+	opacity: 0;
+	//font-weight: bold;	
+}
+
+body div.container div.unit_contain div.infos div.interet table.popup thead{
+	display: table-header-group;
+	text-align: center;
+	background-color: transparent;
+	
+}
+
+body div.container div.unit_contain div.infos div.interet table.popup tbody{
+	display: table-row-group;
+	background-color: transparent;
+}
+
+body div.container div.unit_contain div.infos div.interet table.popup thead tr{
+	display: table-row;
+}
+
+body div.container div.unit_contain div.infos div.interet table.popup tbody tr{
+	display: table-row;
+}
+
+body div.container div.unit_contain div.infos div.interet table.popup thead tr th{
+	display: table-cell;
+	background-color: transparent;
+	border: 1px solid #7D7D7D;
+}
+
+body div.container div.unit_contain div.infos div.interet table.popup tbody tr td{
+	display: table-cell;
+	background-color: transparent;
+	border: 1px solid #7D7D7D;
+	text-align: center;
+}
+
+body div.container div.unit_contain div.infos div.interet p{
+	font-size: .7em;
+	vertical-align: middle;
 	margin-top: 0;
 	padding-top: 0;
 }
+
+body div.container div.unit_contain div.infos div.interet:hover table.popup{
+	top: -70px;
+	left: -80px;
+	opacity: 1;
+	pointer-events: auto;
+	-webkit-transform: translateY(0);
+	   -moz-transform: translateY(0);
+	    -ms-transform: translateY(0);
+	     -o-transform: translateY(0);
+	        transform: translateY(0);
+}
+
+body div.container div.unit_contain div.infos div.interet:hover table.popup caption{
+	opacity: 1;
+	-webkit-transition: opacity .5s linear;
+	   -moz-transition: opacity .5s linear;
+	    -ms-transition: opacity .5s linear;
+	     -o-transition: opacity .5s linear;
+	        transition: opacity .5s linear;
+}
+
+/****************************************
+********** Quotes section rules *********
+****************************************/
 
 body div.container div.unit_contain div#quotes{
 	position: absolute;
@@ -256,7 +352,7 @@ body div.container div.unit_contain:last-child div.infos{
 	overflow: hidden;
 }
 
-body div.container div.unit_contain:last-child div.infos:hover table{
+body div.container div.unit_contain:last-child div.infos:hover table.calendar{
 	position: absolute;
 	bottom: 5px;
 	background-color: #d7d7d7;
@@ -270,12 +366,22 @@ body div.container div.unit_contain:last-child div.infos:hover table{
 	-ms-box-shadow: 0 -2px 10px 1px rgba(0, 0, 0, 0.5);
 }
 
+body div.container div.unit_contain:last-child div.infos:hover table.calendar caption{
+	display: table-caption;
+	background-color: #d7d7d7;
+	border: 1px solid #7D7D7D;
+	color: #7D7D7D;
+	font-weight: bold;	
+}
 
-body div.container div.unit_contain div.infos table{
+
+body div.container div.unit_contain div.infos table.calendar{
 	display: table;
 	width: 95%;
 	margin: auto;
 	bottom: 0px;
+	background-color: #fff;
+	border: 1px solid #7D7D7D;
 	-webkit-transition: bottom .5s linear;
 	   -moz-transition: bottom .5s linear;
 	    -ms-transition: bottom .5s linear;
@@ -283,35 +389,51 @@ body div.container div.unit_contain div.infos table{
 	        transition: bottom .5s linear;
 }
 
-body div.container div.unit_contain:last-child div.infos table caption{
+body div.container div.unit_contain:last-child div.infos table.calendar caption{
 	display: table-caption;
 	color: #7D7D7D;
 	font-weight: bold;	
 }
 
-body div.container div.unit_contain div.infos table thead{
+body div.container div.unit_contain div.infos table.calendar thead{
 	display: table-header-group;
 }
 
-body div.container div.unit_contain div.infos table tbody{
+body div.container div.unit_contain div.infos table.calendar tbody{
 	display: table-row-group;
 }
 
-body div.container div.unit_contain div.infos table thead tr{
+body div.container div.unit_contain div.infos table.calendar thead tr{
 	display: table-row;
 }
 
-body div.container div.unit_contain div.infos table tbody tr{
+body div.container div.unit_contain div.infos table.calendar tbody tr{
+	border: 1px solid #7D7D7D;
 	display: table-row;
 }
 
 body div.container div.unit_contain div.infos table thead tr th{
 	display: table-cell;
+	border: 1px solid #7D7D7D;
 }
 
-body div.container div.unit_contain div.infos table tbody tr td{
+body div.container div.unit_contain div.infos table.calendar tbody tr td{
 	display: table-cell;
 	text-align: center;
+	border: 1px solid #7D7D7D;
+	cursor: pointer;
+}
+
+body div.container div.unit_contain div.infos table.calendar tbody tr td:hover{
+	-webkit-transform: scale(1.1, 1.1);
+	   -moz-transform: scale(1.1, 1.1);
+	    -ms-transform: scale(1.1, 1.1);
+	     -o-transform: scale(1.1, 1.1);
+	        transform: scale(1.1, 1.1);
+	color: #fff;
+	background-color: rgba(125, 125, 125, 1);
+	font-weight: bold;
+	border: 1px solid #7D7D7D;
 }
 
 .today{
@@ -627,7 +749,7 @@ body div#analyse table tbody tr td{
 	padding: 0;
 }
 
-body table tbody tr td{
+body div#analyse table tbody tr td{
 	border: 1px solid #7D7D7D;
 	margin: 0;
 	cursor: pointer;
@@ -639,7 +761,7 @@ body table tbody tr td{
 	        transition: transform .1s linear;
 }
 
-body table tbody tr td:hover{
+body div#analyse table tbody tr td:hover{
 	background-color: #7D7D7D;
 	color: #FFF;
 	font-weight: bold;
