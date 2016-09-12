@@ -3,4 +3,4 @@ node_modules
 img/**
 fonts/**
 weather
-json
+json/*.json
