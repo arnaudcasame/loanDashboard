@@ -41,8 +41,12 @@ function failureCallBack(){
 var picture = document.getElementById('weatherlogo');
 var temperatu = document.getElementById('temperature');
 var endroit = document.getElementById('endroit');
-var heure = document.getElementById('heure');
+var date = document.getElementById('heure');
+var vent = document.getElementById('vent');
 var description = document.getElementById('description');
+var humidite = document.getElementById('humidite');
+var leve = document.getElementById('levee');
+var couche = document.getElementById('couche');
 var weatherLocalUrl = 'json/weather.json';
 var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather';
 
@@ -154,7 +158,7 @@ function treatWords(data){
 
 
 function treatWeather(data){
-
+	
 	var weather = {
 		"zone": data.name,
 		"temp" : Math.floor(data.main.temp-273.15),
@@ -162,20 +166,32 @@ function treatWeather(data){
 		"status": data.weather[0].description,
 		"picture": data.weather[0].icon,
 		"humidity": data.main.humidity,
-		"min_temp": data.main.temp_min,
-		"max_temp": data.main.temp_max,
+		"min_temp": Math.floor(data.main.temp_min),
+		"max_temp": Math.floor(data.main.temp_max),
 		"sunr" : data.sys.sunrise,
 		"heure" : data.dt,
 		"suns" : data.sys.sunset
 	};
 
 	picture.src ='weather/'+weather.picture+'.png';
-	//heure.innerHTML = (new Date(weather.heure * 1000)).toGMTString();
+	date.innerHTML = 'Mise à jour : '+treatDate(weather.heure, 1);
 	endroit.innerHTML = 'Commune : '+weather.zone;
 	description.innerHTML = 'Description : '+weather.status;
-	//vent.innerHTML = weather.wind+' mph';
-	//humidite.innerHTML = weather.humidity+' %';
-	//liste[4].innerHTML = (new Date(weather.sunr * 1000)).toUTCString();
-	//liste[5].innerHTML = (new Date(weather.suns * 1000)).toGMTString();
-	temperatu.innerHTML = 'Temperature : '+weather.temp+' degrés CELCIUS';
+	vent.innerHTML = 'Vitesse du vent : '+weather.wind+' mph';
+	humidite.innerHTML = 'Humidité : '+weather.humidity+' %';
+	leve.innerHTML = 'Levé du soleil : '+treatDate(weather.sunr, 0);
+	couche.innerHTML = 'Couché du soleil : '+treatDate(weather.suns, 0);
+	temperatu.innerHTML = 'Température : '+weather.temp+' degrés CELCIUS';
+}
+
+function treatDate(timetype, s){
+	var infoDate = new Date(timetype * 1000);
+	var day = infoDate.getDay();
+	var date = infoDate.getDate();
+	var month = infoDate.getMonth() + 1;
+	var year = infoDate.getFullYear();
+	var hour = infoDate.getHours();
+	var minute = infoDate.getMinutes();
+	var second = infoDate.getSeconds();
+	return (s===1) ? kronos.infoDay(day).fr +' '+date+' '+kronos.infoMonth(month).abrfr+' à '+hour+':'+minute+':'+second : hour+':'+minute+':'+second;
 }
