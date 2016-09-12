@@ -1,4 +1,4 @@
-(function(){
+var kronos = (function(){
 
 	//defining and assigning variables
 	var today = new Date(),
@@ -66,6 +66,31 @@
 		}
 	}
 
+	function infoDay(dayNum){
+		switch (dayNum) {
+	        case 1:
+	            return {fr: "lundi", en:"monday", abren: "mon", abrfr: "lun"};
+	            break;
+	        case 2:
+	            return {fr: "mardi", en:"tuesday", abren: "tue", abrfr: "mar"};
+	            break;
+	        case 3:
+	            return {fr: "mercredi", en:"wednesday", abren: "wed", abrfr: "mer"};
+	            break;
+	        case 4:
+	            return {fr: "jeudi", en:"thursday", abren: "thu", abrfr: "jeu"};
+	            break;
+	        case 5:
+	            return {fr: "vendredi", en:"friday", abren: "fri", abrfr: "ven"};
+	            break;
+	        case 6:
+	            return {fr: "samedi", en:"saturday", abren: "sat", abrfr: "sam"};
+	            break;
+	        default:
+	            return {fr: "dimanche", en:"sunday", abren: "sun", abrfr: "dim"};
+	    }
+	}
+
 	function infoMonth(monthNum){
 		 switch (monthNum) {
 	        case 1:
@@ -108,5 +133,10 @@
 
 	// rendering the calendar
 	render(calendarData());
+
+	return {
+		infoMonth : infoMonth,
+		infoDay : infoDay
+	}
 
 })();
