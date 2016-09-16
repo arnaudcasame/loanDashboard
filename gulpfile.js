@@ -1,6 +1,7 @@
 var gulp 		= require('gulp'),
 	gutil		= require('gulp-util'),
 	browserify	= require('gulp-browserify'),
+	connect		= require('gulp-connect'),
 	compass		= require('gulp-compass'),
 	concat		= require('gulp-concat');
 
@@ -20,12 +21,14 @@ var jsSources = [
 ];
 
 var sassSources = ['process/sass/style.scss'];
+var htmlSources = ['builds/development/*.html'];
 
 gulp.task('js', function(){
 	gulp.src(jsSources)
 		.pipe(concat('scripts.js'))
 		.pipe(browserify())
-		.pipe(gulp.dest('builds/development/js'));
+		.pipe(gulp.dest('builds/development/js'))
+		.pipe(connect.reload());
 });
 
 gulp.task('compass', function(){
@@ -36,12 +39,26 @@ gulp.task('compass', function(){
 			style: 'expanded'
 		})
 			.on('error', gutil.log))
-		.pipe(gulp.dest('builds/development/css'));
+		.pipe(gulp.dest('builds/development/css'))
+		.pipe(connect.reload());
 });
 
 gulp.task('watch', function(){
 	gulp.watch(jsSources, ['js']);
 	gulp.watch('process/sass/*.scss', ['compass']);
+	gulp.watch(htmlSources, ['html']);
 });
 
-gulp.task('default', ['js', 'compass', 'watch']);
+gulp.task('html', function(){
+	gulp.src(htmlSources)
+	.pipe(connect.reload());
+});
+
+gulp.task('connect', function(){
+	connect.server({
+		root: 'builds/development/',
+		livereload: true
+	});
+});
+
+gulp.task('default', ['js', 'compass', 'html', 'connect', 'watch']);
