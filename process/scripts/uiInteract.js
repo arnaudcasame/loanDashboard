@@ -1,3 +1,4 @@
+var $ = require('jquery');
 $(document).ready(function(){
 	document.getElementById('_1').checked = false;
 	document.getElementById('_2').checked = false;
