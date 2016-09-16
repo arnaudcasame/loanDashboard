@@ -1,7 +1,7 @@
 .DS_Store
 .gitignore
 node_modules
-img/**
-fonts/**
-weather
-json/**
+builds/development/img/**
+builds/development/fonts/**
+builds/development/weather
+builds/development/json/**
