@@ -45,8 +45,8 @@ var date = document.getElementById('heure');
 var vent = document.getElementById('vent');
 var description = document.getElementById('description');
 var humidite = document.getElementById('humidite');
-var leve = document.getElementById('levee');
-var couche = document.getElementById('couche');
+//var leve = document.getElementById('levee');
+//var couche = document.getElementById('couche');
 var weatherLocalUrl = 'json/weather.json';
 var weatherUrl = 'http://api.openweathermap.org/data/2.5/weather';
 
@@ -174,14 +174,14 @@ function treatWeather(data){
 	};
 
 	picture.src ='weather/'+weather.picture+'.png';
-	date.innerHTML = 'Mise à jour : '+treatDate(weather.heure, 1);
-	endroit.innerHTML = 'Commune : '+weather.zone;
-	description.innerHTML = 'Description : '+weather.status;
-	vent.innerHTML = 'Vitesse du vent : '+weather.wind+' mph';
-	humidite.innerHTML = 'Humidité : '+weather.humidity+' %';
-	leve.innerHTML = 'Levé du soleil : '+treatDate(weather.sunr, 0);
-	couche.innerHTML = 'Couché du soleil : '+treatDate(weather.suns, 0);
-	temperatu.innerHTML = 'Température : '+weather.temp+' degrés CELCIUS';
+	date.innerHTML = treatDate(weather.heure, 3);
+	endroit.innerHTML = weather.zone;
+	description.innerHTML = weather.status;
+	vent.innerHTML = weather.wind+' mph';
+	humidite.innerHTML = weather.humidity+' %';
+	//leve.innerHTML = 'Levé du soleil : '+treatDate(weather.sunr, 0);
+	//couche.innerHTML = 'Couché du soleil : '+treatDate(weather.suns, 0);
+	temperatu.innerHTML = weather.temp;
 }
 
 function treatDate(timetype, s){
@@ -193,5 +193,15 @@ function treatDate(timetype, s){
 	var hour = infoDate.getHours();
 	var minute = infoDate.getMinutes();
 	var second = infoDate.getSeconds();
-	return (s===1) ? kronos.infoDay(day).fr +' '+date+' '+kronos.infoMonth(month).abrfr+' à '+hour+':'+minute+':'+second : hour+':'+minute+':'+second;
+	switch (s){
+		case 1:
+			return kronos.infoDay(day).fr +' '+date+' '+kronos.infoMonth(month).abrfr+' à '+hour+':'+minute+':'+second;
+			break;
+		case 2:
+			return hour+':'+minute+':'+second;
+			break;
+		case 3:
+			return kronos.infoDay(day).abrfr +' '+date+' '+kronos.infoMonth(month).abrfr+' à '+hour+':'+minute+':'+second;
+			break;
+	}
 }

@@ -3426,36 +3426,6 @@ body div.container div.unit_contain div#quotes span#author {
 }
 
 /****************************************
-************ weather   rules ***********
-****************************************/
-body div.container div.unit_contain div.logo img#weatherlogo {
-  width: 80%;
-}
-
-body div.container div.unit_contain div#weather-box div.weather {
-  padding-left: 5px;
-  height: 55px;
-  overflow: hidden;
-  background-color: #fff;
-  position: relative;
-}
-
-body div.container div.unit_contain div#weather-box:hover {
-  background-color: #d7d7d7;
-}
-
-body div.container div.unit_contain div#weather-box:hover div.weather {
-  cursor: pointer;
-  height: auto;
-  z-index: 101;
-  background-color: #d7d7d7;
-}
-
-body div.container div.unit_contain div#weather-box div.weather p {
-  display: block;
-}
-
-/****************************************
 ************ calendar   rules ***********
 ****************************************/
 body div.container div.unit_contain:last-child {
@@ -4183,4 +4153,92 @@ body div.container div#comparaison {
   	margin-top: 60px;
   	padding: 0;
   } */
+}
+/****************************************
+************ weather   rules ***********
+****************************************/
+div.logo #weatherlogo {
+  width: 80%;
+}
+
+div.unit_contain div.weather {
+  padding-left: 1px;
+  background-color: #fff;
+  position: relative;
+}
+div.unit_contain div#weather-box:hover {
+  background-color: #D7D7D7;
+}
+div.unit_contain div#weather-box:hover div.weather {
+  cursor: pointer;
+  z-index: 101;
+  background-color: #d7d7d7;
+}
+
+div.weather div.weather-info-left,
+div.weather div.weather-info-right {
+  text-align: center;
+  width: 50%;
+  display: inline-block;
+  padding: 0;
+  margin: 0;
+  line-height: 17px;
+}
+div.weather div.weather-info-right {
+  float: right;
+  line-height: 16px;
+}
+div.weather div.weather-info-left {
+  float: left;
+  margin-top: 8px;
+}
+
+div.weather-info-right table {
+  display: table;
+  margin: 0;
+  width: 100%;
+}
+div.weather-info-right table tr {
+  display: table-row;
+  background-color: #7d7d7d;
+  color: #ffffff;
+  padding: 0;
+  text-align: center;
+  font-weight: bold;
+}
+div.weather-info-right table tr:first-child {
+  border-bottom: 1px solid #ffffff;
+}
+div.weather-info-right p {
+  text-align: left;
+}
+
+div.weather-info-left div p#temperature {
+  display: inline-block;
+  font-size: 3.5em;
+  font-weight: bold;
+  margin: 0;
+}
+div.weather-info-left div > div {
+  display: inline-block;
+  padding: 0;
+}
+div.weather-info-left #degree {
+  line-height: 18px;
+  position: relative;
+  left: 0;
+  top: -10px;
+}
+div.weather-info-left #celcius {
+  font-size: 1.5em;
+  font-weight: bold;
+}
+div.weather-info-left #description {
+  text-align: center;
+  display: block;
+  margin: 0;
+  padding: 0;
+  background-color: #7d7d7d;
+  color: #FFFFFF;
+  font-weight: bold;
 }

@@ -315,37 +315,6 @@ body div.container div.unit_contain div#quotes span#author{
 	font-style: italic;
 }
 
-/****************************************
-************ weather   rules ***********
-****************************************/
-body div.container div.unit_contain div.logo img#weatherlogo{
-	width: 80%;
-}
-
-body div.container div.unit_contain div#weather-box div.weather{
-	padding-left: 5px;
-	//width:  100%;
-	height: 55px;
-	overflow: hidden;
-	background-color: #fff;
-	position: relative;
-	//border: 1px solid red;
-}
-
-body div.container div.unit_contain div#weather-box:hover{
-	background-color: #d7d7d7;
-}
-
-body div.container div.unit_contain div#weather-box:hover div.weather{
-	cursor: pointer;
-	height: auto;
-	z-index:  101;
-	background-color: #d7d7d7;
-}
-
-body div.container div.unit_contain div#weather-box div.weather p{
-	display: block;
-}
 
 /****************************************
 ************ calendar   rules ***********
