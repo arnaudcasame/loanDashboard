@@ -57,6 +57,8 @@ gulp.task('html', function(){
 gulp.task('connect', function(){
 	connect.server({
 		root: 'builds/development/',
+		port: 3030,
+		host: 'localhost',
 		livereload: true
 	});
 });
