@@ -3121,218 +3121,6 @@ th {
   padding: 0;
 }
 
-/*****************************************
-* Media Queries rules for responsiveness *
-*****************************************/
-@media screen and (max-width: 350px) {
-  /* Taux Change part */
-  body div.container div.unit_contain div.infos div.taux p:first-child {
-    font-size: 1.1em;
-  }
-
-  body div.container div.unit_contain div.infos div.taux p:last-child {
-    font-size: 0.6em;
-  }
-
-  /* Taux Interet part */
-  body div.container div.unit_contain div.infos div.interet table.popup {
-    font-size: 0.9em;
-    width: 150px;
-    left: -80px;
-  }
-
-  body div.container div.unit_contain div.infos div.interet table.popup caption {
-    font-size: 0.9em;
-  }
-
-  /* Quotes part */
-  body div.container div.unit_contain div#quotes p#quote {
-    font-size: 0.7em;
-  }
-
-  body div.container div.unit_contain div#quotes span {
-    font-size: 0.9em;
-    float: right;
-  }
-
-  /* Weather part */
-  body div.container div.unit_contain div.infos div.weather p {
-    font-size: .7em;
-  }
-
-  /* Calendar part */
-  body div.container div.unit_contain:last-child div.logo p#mois,
-  body div.container div.unit_contain:last-child div.logo p#annee {
-    font-size: .3em;
-  }
-}
-@media screen and (max-width: 480px) {
-  body header#head div#search_contain {
-    width: 100%;
-    margin: 8px auto;
-  }
-
-  body header#head div#search_contain input#searchin {
-    display: block;
-    width: 90%;
-    margin: auto;
-  }
-
-  body header#head div#search_contain button#search {
-    left: 85%;
-  }
-
-  body div#analyse table {
-    top: 0;
-  }
-
-  body table thead tr th {
-    font-size: 0.8em;
-  }
-
-  body table tbody tr td {
-    padding: 0;
-    font-size: 0.8em;
-  }
-
-  body div.container {
-    display: block;
-    width: 90%;
-    margin: auto;
-  }
-
-  body div.container div.unit_contain div.infos {
-    float: right;
-  }
-
-  body div.container div.unit_contain div.infos div.taux p {
-    font-size: 0.8em;
-  }
-
-  body div.container div.unit_contain div.infos p {
-    display: inline;
-    font-size: 0.8em;
-  }
-
-  body div.container div.unit_contain div#quote span {
-    font-size: 0.9em;
-    float: right;
-  }
-
-  body div#first-contain {
-    margin-top: 60px;
-  }
-
-  body div#second-contain {
-    width: 90%;
-    margin: auto;
-  }
-
-  body div#analyse {
-    display: block;
-    width: 98%;
-    margin: auto;
-    padding: 0;
-  }
-
-  body div#analyse #canvas-holder {
-    width: 100%;
-    margin: auto;
-  }
-}
-@media (min-width: 480px) and (max-width: 750px) {
-  body div#analyse table {
-    top: 0;
-    margin: auto;
-  }
-
-  body table thead tr th {
-    font-size: 1em;
-  }
-
-  body table tbody tr td {
-    padding: 0;
-    font-size: 1em;
-  }
-
-  body div.container {
-    display: block;
-    width: 90%;
-    margin: auto;
-  }
-
-  body div.container div.unit_contain div.infos {
-    float: right;
-  }
-
-  body div.container div.unit_contain div.infos div.taux {
-    font-size: 0.8em;
-  }
-
-  body div.container div.unit_contain div.infos p {
-    display: inline;
-    font-size: 0.8em;
-  }
-
-  body div.container div.unit_contain div#quote span {
-    font-size: 0.9em;
-    float: right;
-  }
-
-  body div#first-contain {
-    margin-top: 60px;
-  }
-
-  body div#second-contain {
-    width: 90%;
-    margin: auto;
-  }
-
-  body div#analyse {
-    display: block;
-    width: 98%;
-    margin: auto;
-    padding: 0;
-  }
-
-  body div#analyse #canvas-holder {
-    width: 100%;
-    margin: auto;
-  }
-}
-@media (min-width: 750px) and (max-width: 1200px) {
-  body div#analyse {
-    display: block;
-    max-width: 1000px;
-    width: 70%;
-    margin: 0 auto;
-    padding: 0;
-  }
-
-  body div#analyse table {
-    top: 0;
-  }
-
-  body table thead tr th {
-    font-size: 1em;
-  }
-
-  body table tbody tr td {
-    padding: 0;
-    font-size: 1em;
-  }
-
-  body div.container {
-    width: 90%;
-    margin-top: 60px;
-  }
-
-  /* body div#analyse{
-  	width: 37%;
-  	margin-top: 60px;
-  	padding: 0;
-  } */
-}
 * {
   padding: 0;
   margin: 0;
@@ -4182,4 +3970,217 @@ div#analyse section#section3 h3 {
 body div.container div#comparaison {
   margin-top: 1%;
   background-color: #FFF;
+}
+
+/*****************************************
+* Media Queries rules for responsiveness *
+*****************************************/
+@media screen and (max-width: 350px) {
+  /* Taux Change part */
+  body div.container div.unit_contain div.infos div.taux p:first-child {
+    font-size: 1.1em;
+  }
+
+  body div.container div.unit_contain div.infos div.taux p:last-child {
+    font-size: 0.6em;
+  }
+
+  /* Taux Interet part */
+  body div.container div.unit_contain div.infos div.interet table.popup {
+    font-size: 0.9em;
+    width: 150px;
+    left: -80px;
+  }
+
+  body div.container div.unit_contain div.infos div.interet table.popup caption {
+    font-size: 0.9em;
+  }
+
+  /* Quotes part */
+  body div.container div.unit_contain div#quotes p#quote {
+    font-size: 0.7em;
+  }
+
+  body div.container div.unit_contain div#quotes span {
+    font-size: 0.9em;
+    float: right;
+  }
+
+  /* Weather part */
+  body div.container div.unit_contain div.infos div.weather p {
+    font-size: .7em;
+  }
+
+  /* Calendar part */
+  body div.container div.unit_contain:last-child div.logo p#mois,
+  body div.container div.unit_contain:last-child div.logo p#annee {
+    font-size: .3em;
+  }
+}
+@media screen and (max-width: 480px) {
+  body header#head div#search_contain {
+    width: 100%;
+    margin: 8px auto;
+  }
+
+  body header#head div#search_contain input#searchin {
+    display: block;
+    width: 90%;
+    margin: auto;
+  }
+
+  body header#head div#search_contain button#search {
+    left: 85%;
+  }
+
+  body div#analyse table {
+    top: 0;
+  }
+
+  body table thead tr th {
+    font-size: 0.8em;
+  }
+
+  body table tbody tr td {
+    padding: 0;
+    font-size: 0.8em;
+  }
+
+  body div.container {
+    display: block;
+    width: 90%;
+    margin: auto;
+  }
+
+  body div.container div.unit_contain div.infos {
+    float: right;
+  }
+
+  body div.container div.unit_contain div.infos div.taux p {
+    font-size: 0.8em;
+  }
+
+  body div.container div.unit_contain div.infos p {
+    display: inline;
+    font-size: 0.8em;
+  }
+
+  body div.container div.unit_contain div#quote span {
+    font-size: 0.9em;
+    float: right;
+  }
+
+  body div#first-contain {
+    margin-top: 60px;
+  }
+
+  body div#second-contain {
+    width: 90%;
+    margin: auto;
+  }
+
+  body div#analyse {
+    display: block;
+    width: 98%;
+    margin: auto;
+    padding: 0;
+  }
+
+  body div#analyse #canvas-holder {
+    width: 100%;
+    margin: auto;
+  }
+}
+@media (min-width: 480px) and (max-width: 750px) {
+  body div#analyse table {
+    top: 0;
+    margin: auto;
+  }
+
+  body table thead tr th {
+    font-size: 1em;
+  }
+
+  body table tbody tr td {
+    padding: 0;
+    font-size: 1em;
+  }
+
+  body div.container {
+    display: block;
+    width: 90%;
+    margin: auto;
+  }
+
+  body div.container div.unit_contain div.infos {
+    float: right;
+  }
+
+  body div.container div.unit_contain div.infos div.taux {
+    font-size: 0.8em;
+  }
+
+  body div.container div.unit_contain div.infos p {
+    display: inline;
+    font-size: 0.8em;
+  }
+
+  body div.container div.unit_contain div#quote span {
+    font-size: 0.9em;
+    float: right;
+  }
+
+  body div#first-contain {
+    margin-top: 60px;
+  }
+
+  body div#second-contain {
+    width: 90%;
+    margin: auto;
+  }
+
+  body div#analyse {
+    display: block;
+    width: 98%;
+    margin: auto;
+    padding: 0;
+  }
+
+  body div#analyse #canvas-holder {
+    width: 100%;
+    margin: auto;
+  }
+}
+@media (min-width: 750px) and (max-width: 1200px) {
+  body div#analyse {
+    display: block;
+    max-width: 1000px;
+    width: 70%;
+    margin: 0 auto;
+    padding: 0;
+  }
+
+  body div#analyse table {
+    top: 0;
+  }
+
+  body table thead tr th {
+    font-size: 1em;
+  }
+
+  body table tbody tr td {
+    padding: 0;
+    font-size: 1em;
+  }
+
+  body div.container {
+    width: 90%;
+    margin-top: 60px;
+  }
+
+  /* body div#analyse{
+  	width: 37%;
+  	margin-top: 60px;
+  	padding: 0;
+  } */
 }
